@@ -72,6 +72,31 @@ def parse_document(text):
     return shared, ideas
 
 
+def detail_fields(section):
+    """只读取围栏外的三级字段标题；字段内容保留自然语言。"""
+    fields = {}
+    current = None
+    fence = None
+    for line in section.splitlines(keepends=True):
+        content = line.rstrip("\r\n")
+        if fence:
+            if current:
+                fields[current].append(line)
+            if re.fullmatch(r" {0,3}" + re.escape(fence[0]) + "{" + str(len(fence)) + r",}[ \t]*", content):
+                fence = None
+            continue
+        opening = FENCE.fullmatch(content)
+        if opening:
+            fence = opening[1]
+        heading = re.fullmatch(r"### ([a-z_]+)[ \t]*", content)
+        if heading and not fence:
+            current = heading[1]
+            fields.setdefault(current, [])
+        elif current:
+            fields[current].append(line)
+    return {key: "".join(value).strip() for key, value in fields.items()}
+
+
 def extract_idea(text, idea_id):
     shared, ideas = parse_document(text)
     if idea_id not in ideas:
