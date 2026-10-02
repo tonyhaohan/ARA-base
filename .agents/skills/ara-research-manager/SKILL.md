@@ -7,7 +7,7 @@ description: Record research questions, experiments, decisions, failed direction
 
 Read `docs/PROTOCOL.md` for fields and `docs/NOTES.md` for memo boundaries. Paths are relative to the project root.
 
-At task start, list Issues and relevant ideas with `python scripts/ara.py issues` and `ideas --issue N`. Read only needed ideas with `read ID`; revisit their dependencies only when the task needs them. Search failures before proposing a repeated experiment.
+At task start, list Issues and relevant ideas with `python scripts/ara.py issues` , `issue N` (summary and highlights), and `ideas --issue N`. Read only needed ideas with `read ID`; revisit their dependencies only when the task needs them. Search failures before proposing a repeated experiment.
 
 Every research Issue has one actually linked GitHub branch, one append-only ExecPlan and one Markdown memo. Record full raw user prompts in that Issue's ExecPlan. The goal can change; dated progress, next steps, decisions, evidence and recovery information are append-only.
 

@@ -108,6 +108,22 @@ class RecordsTest(unittest.TestCase):
         for bad in (text.replace("I001-N02", "I001-N01"), text + "\n~~~\n", text.replace("## I001-N02", "  ## I001-N02")):
             with self.assertRaises(ValueError): parse_document(bad)
 
+    def test_memo_fragment_is_a_logical_id(self):
+        self.ideas[1]["record"] += "#I001-N01"
+        self.write("ara/trace/ideas.yaml", {"ideas": self.ideas})
+        self.validate()
+        self.ideas[1]["record"] = "ara/issues/issue001.md#I002-N01"
+        self.write("ara/trace/ideas.yaml", {"ideas": self.ideas})
+        with self.assertRaisesRegex(ValueError, "fragment"):
+            self.validate()
+
+    def test_focused_issue_cli(self):
+        result = subprocess.run([sys.executable, str(ROOT / "scripts/ara.py"), "--root", str(self.root), "issue", "2"], check=True, capture_output=True, text=True)
+        item = yaml.safe_load(result.stdout)
+        self.assertEqual(item["issue"], 2)
+        self.assertEqual(item["promising_ideas"][0]["id"], "I002-N01")
+        self.assertNotIn("I001-N01", result.stdout)
+
     def test_duplicate_yaml_keys_rejected(self):
         with self.assertRaisesRegex(ValueError, "Duplicate YAML"):
             ara.parse_yaml("id: first\nid: second\n")

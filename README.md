@@ -3,16 +3,18 @@
 可继承、可按部分抽取的自动研究记录基准。Issue 概览和 idea 细节各有一层 DAG；研究纪要按需读取，失败、证据和结论形成过程都可追踪。
 
 ```sh
-python3 -m pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 python3 scripts/ara.py validate
 python3 scripts/ara.py render
 python3 scripts/ara.py issues
-python3 scripts/ara.py ideas --issue 3
-python3 scripts/ara.py read I003-N01
+python3 scripts/ara.py ideas
+python3 scripts/ara.py show I000-N00
 python3 -m unittest discover -s tests -v
 ```
 
-打开 `ara/views/index.html` 查看双层研究地图。`main` 保留干净的初始 artifact（只有虚拟根）；真实 bridge 历史将放在独立的 Issue 分支。
+打开 `ara/views/index.html` 查看双层研究地图。`main` 保留干净的初始 artifact（只有虚拟根）；真实 bridge 历史放在 [`codex/issue2-bridge-history`](https://github.com/tonyhaohan/ARA-base/tree/codex/issue2-bridge-history) 分支。切到示例分支后，用 `python scripts/ara.py issue 5` 查看总结及两组重点 idea，用 `python scripts/ara.py read I003-N01` 提取单个章节。已有 `.venv` 时直接激活复用。只检查页面是否最新使用 `render --check`，不会改写文件。
 
 ## 使用与抽取
 

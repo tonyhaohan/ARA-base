@@ -72,7 +72,7 @@ def index(items, key="id"):
     for item in items:
         require(isinstance(item, dict), "Record must be a mapping")
         identity = item.get(key)
-        require(isinstance(identity, (str, int)) and not isinstance(identity, bool), f"Invalid {key}")
+        require((isinstance(identity, str) and bool(identity.strip())) if key == "id" else (type(identity) is int), f"Invalid {key}")
         require(identity not in result, f"Duplicate {key}: {identity}")
         result[identity] = item
     return result
@@ -163,7 +163,9 @@ def validate(root, github=False):
             nonempty(idea, "evidence_note")
         if idea["status"] == "accepted" and idea["type"] in {"experiment", "decision", "pivot"}:
             require(proof, f"{identity}: accepted result lacks evidence")
-        require(idea["record"] == issues[idea["issue"]].get("record"), f"{identity}: memo differs from Issue memo")
+        memo, _, fragment = idea["record"].partition("#")
+        require(memo == issues[idea["issue"]].get("record"), f"{identity}: memo differs from Issue memo")
+        require(not fragment or fragment == identity, f"{identity}: memo fragment points to another idea")
     data["successors"], _ = dag(ideas)
     dag(issues)
     branches = set()
@@ -343,6 +345,8 @@ def main():
     check = commands.add_parser("validate")
     check.add_argument("--github", action="store_true")
     commands.add_parser("issues")
+    issue_query = commands.add_parser("issue")
+    issue_query.add_argument("number", type=int)
     listing = commands.add_parser("ideas")
     listing.add_argument("--issue", type=int)
     read = commands.add_parser("read")
@@ -362,6 +366,9 @@ def main():
         elif args.command == "issues":
             for number, item in data["issues"].items():
                 print(f"#{number}\t{item['title']}\t{item['outcome']}")
+        elif args.command == "issue":
+            require(args.number in data["issues"], f"Unknown Issue #{args.number}")
+            print(yaml.safe_dump(data["issues"][args.number], allow_unicode=True, sort_keys=False), end="")
         elif args.command == "ideas":
             for key, item in data["ideas"].items():
                 if key != ROOT_ID and (args.issue is None or item["issue"] == args.issue):

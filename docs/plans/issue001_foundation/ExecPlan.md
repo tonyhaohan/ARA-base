@@ -93,3 +93,7 @@ ExecPlan按照我们MCNF_tree最新的更新版本来约束。我应该更新了
 
 - 2026-10-02T14:03:21+08:00：执行 python -m unittest discover -s tests -v，11项通过。源数据冻结于migration/source，worker分片位于ignored .work/migration-parts。正式main提交排除migration/。
 - GitHub：https://github.com/tonyhaohan/ARA-base/issues/1；linked branch codex/issue1-ara-foundation。
+
+### 集成反馈 2026-10-02T14:15:43+08:00
+
+12项核心测试通过；新增纪要逻辑片段校验。独立worker发现并已修正文档中的历史迁移、状态映射和字段形状歧义；浏览器验证发现切层时旧详情残留，已清空并自动定位选中节点。所有修复保持通用，进入基准main；迁移材料仍只进入Issue2示例分支。
