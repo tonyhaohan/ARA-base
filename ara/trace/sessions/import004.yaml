@@ -1,0 +1,45 @@
+id: S004-20261002-import
+timestamp: '2026-10-02T13:56:11+08:00'
+issues:
+- 4
+summary: '迁移冻结源Issue #6的15个I006起源节点到目标Issue #4；未重做实验。'
+events:
+- id: EV004-import-01
+  action: import
+  timestamp: '2026-10-02T13:56:11+08:00'
+  provenance: ai-executed
+  refs:
+  - I004-N01
+  - I004-N02
+  - I004-N03
+  - I004-N04
+  - I004-N05
+  - I004-N06
+  - I004-N07
+  - I004-N08
+  - I004-N09
+  - I004-N10
+  - I004-N11
+  - I004-N12
+  - I004-N13
+  - I004-N14
+  - I004-N15
+  - C004-01
+  - C004-02
+  - C004-03
+  - C004-04
+  - E004-01
+  - E004-02
+  - E004-03
+  - E004-04
+  - E004-05
+  - E004-06
+  - E004-07
+  - E004-08
+  - E004-09
+  - E004-10
+  - E004-11
+  - E004-12
+  - E004-13
+  - O004-20260915-historical-hash-microdifference
+  rationale: 将冻结源的身份按mapping编号转换；反转next边合并also_depends_on，保留历史失败、原文与未知来源。不伪造过去转换事件。

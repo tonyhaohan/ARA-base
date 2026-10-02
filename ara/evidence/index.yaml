@@ -1,1 +1,889 @@
-evidence: []
+evidence:
+- id: E003-01
+  kind: requirement.
+  summary: 用户要求用真实网络行为验证 N/M/Q Clos all-to-all，并保留正的固定开销和包切分尾部效应。
+  location: migration/source/issue3-ExecPlan.md
+  identity:
+    sha256: 3715165da0ace305e63a71bcfd7f5f85ecbf9167d7c29d55f4e99b89cb72a52d
+    source_ref: codex/3-clos-alltoall-calibration
+    graph_commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    note: ExecPlan取自保留的旧分支，不属于main的冻结tree；其精确内容由本地SHA256确认。
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'GitHub Issue #3；`origin/codex/3-clos-alltoall-calibration`
+      上的 `docs/plans/issue3_clos_alltoall_calibration/ExecPlan.md`。'
+  result: 用户要求用真实网络行为验证 N/M/Q Clos all-to-all，并保留正的固定开销和包切分尾部效应。
+  raw_availability: not_applicable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E003-02
+  kind: baseline with credibility limit.
+  summary: 解析估计可以直接拟合目标公式，但不能证明真实 ASTRA/ns-3 使用了指定物理路径。
+  location: migration/source/issue3-ExecPlan.md
+  identity:
+    sha256: 3715165da0ace305e63a71bcfd7f5f85ecbf9167d7c29d55f4e99b89cb72a52d
+    source_ref: codex/3-clos-alltoall-calibration
+    graph_commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    note: ExecPlan取自保留的旧分支，不属于main的冻结tree；其精确内容由本地SHA256确认。
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'Issue #3 历史报告和 commit `356e5de`。'
+  result: 解析估计可以直接拟合目标公式，但不能证明真实 ASTRA/ns-3 使用了指定物理路径。
+  raw_availability: unavailable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E003-03
+  kind: negative.
+  summary: bundle 中拆分 solverPath 不会让真实 ASTRA raw rank 自动获得 M/Q 并行注入，也不是 simulator
+    路由契约。
+  location: migration/source/issue3-ExecPlan.md
+  identity:
+    sha256: 3715165da0ace305e63a71bcfd7f5f85ecbf9167d7c29d55f4e99b89cb72a52d
+    source_ref: codex/3-clos-alltoall-calibration
+    graph_commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    note: ExecPlan取自保留的旧分支，不属于main的冻结tree；其精确内容由本地SHA256确认。
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'Issue #3 raw-rank probe；Issue #3 progress comment。'
+  result: '`N=2,M=2,Q=1` 为 165.172us vs 80.036us；`N=2,M=1,Q=2` 为 166.135us vs 80.036us。'
+  raw_availability: unavailable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E003-04
+  kind: partial positive.
+  summary: 把每条 lane 展开成独立 ASTRA rank 可以展示 M/Q 容量，但改变了原始 GPU rank 语义。
+  location: migration/source/issue3-ExecPlan.md
+  identity:
+    sha256: 3715165da0ace305e63a71bcfd7f5f85ecbf9167d7c29d55f4e99b89cb72a52d
+    source_ref: codex/3-clos-alltoall-calibration
+    graph_commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    note: ExecPlan取自保留的旧分支，不属于main的冻结tree；其精确内容由本地SHA256确认。
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'Issue #3 lane-expanded runs、历史报告和 ExecPlan。'
+  result: 最大运行到 2048 ASTRA ranks；大量大 N case 达标，小 N 高并行度 case 仍受固定开销影响。
+  raw_availability: unavailable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E003-05
+  kind: negative.
+  summary: ASTRA native direct/ring 等 collective 没有为同一 GPU pair 提供要求的 M/Q 路径利用率。
+  location: migration/source/issue3-ExecPlan.md
+  identity:
+    sha256: 3715165da0ace305e63a71bcfd7f5f85ecbf9167d7c29d55f4e99b89cb72a52d
+    source_ref: codex/3-clos-alltoall-calibration
+    graph_commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    note: ExecPlan取自保留的旧分支，不属于main的冻结tree；其精确内容由本地SHA256确认。
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'Issue #3 native all-to-all probes 和历史报告。'
+  result: direct `N=8,M=2,Q=1` 为 982.526us vs 560.000us；ring `N=8,M=1,Q=1` 为 4654.114us
+    vs 1120.000us。
+  raw_availability: unavailable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E003-06
+  kind: mixed.
+  summary: 大量 QP 可以通过 backend hash 改善部分 case，但 K 与结果非单调、需要高 QP 数且不能形成明确路径契约。
+  location: migration/source/issue3-ExecPlan.md
+  identity:
+    sha256: 3715165da0ace305e63a71bcfd7f5f85ecbf9167d7c29d55f4e99b89cb72a52d
+    source_ref: codex/3-clos-alltoall-calibration
+    graph_commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    note: ExecPlan取自保留的旧分支，不属于main的冻结tree；其精确内容由本地SHA256确认。
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'Issue #3 `qphash` probes、历史报告和 branch commits。'
+  result: 部分 case 需要 K=64、120、134 甚至更高；邻近 K 可能退化。
+  raw_availability: unavailable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E003-07
+  kind: mixed.
+  summary: 把平行链路改写成不同 next-hop 可以让 Q 参与 hash，但仍然不能指定完整物理路径或稳定满足所有 case。
+  location: migration/source/issue3-ExecPlan.md
+  identity:
+    sha256: 3715165da0ace305e63a71bcfd7f5f85ecbf9167d7c29d55f4e99b89cb72a52d
+    source_ref: codex/3-clos-alltoall-calibration
+    graph_commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    note: ExecPlan取自保留的旧分支，不属于main的冻结tree；其精确内容由本地SHA256确认。
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'Issue #3 `qphash+ecmptopo` probes 和历史报告。'
+  result: '`N=2,M=2,Q=2,K=16` 从 96.860us 改善到 53.148us；多个小 N case 仍高于目标。'
+  raw_availability: unavailable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E003-08
+  kind: negative.
+  summary: queue、CC、rendezvous、delay、source-port、ECMP seed 和进一步 K 搜索没有把 high-K proxy
+    变成通用方案。
+  location: migration/source/issue3-ExecPlan.md
+  identity:
+    sha256: 3715165da0ace305e63a71bcfd7f5f85ecbf9167d7c29d55f4e99b89cb72a52d
+    source_ref: codex/3-clos-alltoall-calibration
+    graph_commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    note: ExecPlan取自保留的旧分支，不属于main的冻结tree；其精确内容由本地SHA256确认。
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'Issue #3 历史 ExecPlan observations；branch head `7cde3ed`。'
+  result: queue、CC、rendezvous、delay、source-port、ECMP seed 和进一步 K 搜索没有把 high-K proxy
+    变成通用方案。
+  raw_availability: unavailable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E003-09
+  kind: user-revised pivot.
+  summary: '用户明确拒绝依赖 100+ QP 的随机哈希近似，要求少量 QP、完整路径绑定和每个逻辑流可指定的 QP组；Issue #6 据此替换 Toy
+    Model。'
+  location: migration/source/issue6-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 246bedd2f79783b8e4e71d24fe76fb3cc23a0dd7f4de63828d595e7126bd0b52
+  reproduction:
+    note: 本次迁移不运行仿真；冻结ExecPlan记录历史命令及条件。未取得原 runs/、二进制、完整trace和报告文件。
+    historical_artifact: 'Issue #6 opening rationale、`docs/plans/issue6_qp_config_groups/ExecPlan.md`
+      和最终 merge chain。'
+  result: '用户明确拒绝依赖 100+ QP 的随机哈希近似，要求少量 QP、完整路径绑定和每个逻辑流可指定的 QP组；Issue #6 据此替换 Toy
+    Model。'
+  raw_availability: unavailable
+  limitations: 可取得冻结叙述记录，不等于原始运行证据已归档或本次已复现。原证据索引见 migration/source/ara/evidence/index.md。
+- id: E004-01
+  kind: historical-report
+  summary: 用户要求少量明确的 QP组、每个 QP 绑定一条完整物理路径、4KB小包只选择一次 QP，并把 simulator 修改保持最小。
+  location: migration/source/issue6-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 246bedd2f79783b8e4e71d24fe76fb3cc23a0dd7f4de63828d595e7126bd0b52
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 用户要求少量明确的 QP组、每个 QP 绑定一条完整物理路径、4KB小包只选择一次 QP，并把 simulator 修改保持最小。
+  raw_availability: not_applicable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    用户需求与可信性边界
+
+
+    What it proves: 用户要求少量明确的 QP组、每个 QP 绑定一条完整物理路径、4KB小包只选择一次 QP，并把 simulator 修改保持最小。
+
+
+    Artifact: `docs/plans/issue6_qp_config_groups/ExecPlan.md` 的 `User Raw Prompts`；GitHub
+    Issue #6。
+
+
+    Evidence type: requirement.'
+- id: E004-02
+  kind: historical-report
+  summary: 生成 100+ QP 并等待自动哈希近似均衡复杂且间接，不能表达要求的路径组和 QP组。
+  location: migration/source/issue6-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 246bedd2f79783b8e4e71d24fe76fb3cc23a0dd7f4de63828d595e7126bd0b52
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 生成 100+ QP 并等待自动哈希近似均衡复杂且间接，不能表达要求的路径组和 QP组。
+  raw_availability: not_applicable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    High-K 自动哈希是死路
+
+
+    What it proves: 生成 100+ QP 并等待自动哈希近似均衡复杂且间接，不能表达要求的路径组和 QP组。
+
+
+    Artifact: Issue #6 opening rationale 和 ExecPlan 中的 Issue #3 audit。
+
+
+    Evidence type: negative.'
+- id: E004-03
+  kind: historical-report
+  summary: source-port 搜索可以命中 backend hash slot，五路径 3+2 case 也能分配字节，但 route-slot 顺序依赖
+    build，不能作为稳定完整路径 ABI。
+  location: migration/source/issue6-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 246bedd2f79783b8e4e71d24fe76fb3cc23a0dd7f4de63828d595e7126bd0b52
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: K=1/2/3/5 仿真时间 172.069/87.078/58.775/36.116us；五路径 3+2 为 44.582us。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    Source-port preimage prototype
+
+
+    What it proves: source-port 搜索可以命中 backend hash slot，五路径 3+2 case 也能分配字节，但 route-slot
+    顺序依赖 build，不能作为稳定完整路径 ABI。
+
+
+    Artifact: `runs/issue6_qp_binding_key_cases/`；Issue #6 ExecPlan observations。
+
+
+    Key numbers: K=1/2/3/5 仿真时间 172.069/87.078/58.775/36.116us；五路径 3+2 为 44.582us。
+
+
+    Evidence type: mixed.'
+- id: E004-04
+  kind: historical-report
+  summary: path-specific destination alias 和逐跳单出口路由固定了两条平行入链路与两条平行出链路的四种组合。
+  location: migration/source/issue6-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 246bedd2f79783b8e4e71d24fe76fb3cc23a0dd7f4de63828d595e7126bd0b52
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 四条路径、八个有向 QP 全部匹配预期 interface。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    Q=2 四条完整物理路径
+
+
+    What it proves: path-specific destination alias 和逐跳单出口路由固定了两条平行入链路与两条平行出链路的四种组合。
+
+
+    Artifact: `docs/simulator/astra_ns3/QP_CONFIGURATION_REQUIREMENTS.md`；Issue #6
+    native trace validation。
+
+
+    Key numbers: 四条路径、八个有向 QP 全部匹配预期 interface。
+
+
+    Evidence type: positive.'
+- id: E004-05
+  kind: historical-report
+  summary: 同一 alias/source port 上两个连续 1MiB message 共享 persistent QP 并延续 sequence state。
+  location: migration/source/issue6-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 246bedd2f79783b8e4e71d24fe76fb3cc23a0dd7f4de63828d595e7126bd0b52
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 同一 alias/source port 上两个连续 1MiB message 共享 persistent QP 并延续 sequence state。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    Persistent QP reuse
+
+
+    What it proves: 同一 alias/source port 上两个连续 1MiB message 共享 persistent QP 并延续 sequence
+    state。
+
+
+    Artifact: `scripts/run_qp_reuse_smoke.py`；Issue #6 closeout evidence。
+
+
+    Evidence type: positive.'
+- id: E004-06
+  kind: historical-report
+  summary: 每条完整路径的 QP 数从 R=1 增至 R=2/4 没有稳定容量收益。
+  location: migration/source/issue6-plan/qp_per_path_coarse_results.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 23576f677f00361a01bc07e5e254e0ac6a68eb0c996ec0deb83abafcf2122fc3
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 12/12 final representative cases；理论gap 3.83%--9.37%；最大 R-vs-R1 差异 0.79%；PFC
+    为 0。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    N/M/Q/R 粗扫
+
+
+    What it proves: 每条完整路径的 QP 数从 R=1 增至 R=2/4 没有稳定容量收益。
+
+
+    Artifact: `docs/plans/issue6_qp_config_groups/qp_per_path_coarse_results.md`；`runs/clos_qp_benchmark_coarse/`。
+
+
+    Key numbers: 12/12 final representative cases；理论gap 3.83%--9.37%；最大 R-vs-R1 差异
+    0.79%；PFC 为 0。
+
+
+    Evidence type: positive with residual gap.'
+- id: E004-07
+  kind: historical-report
+  summary: 项目不拥有公共 `astra-network-ns3` 仓库，错误 PR 被撤回，修改最终保留在私有 ASTRA 仓库。
+  location: migration/source/issue6.json
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 327ddbca045e516e16c630541f20149316a81ae9f6288bef1f295f00340f1a49
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 项目不拥有公共 `astra-network-ns3` 仓库，错误 PR 被撤回，修改最终保留在私有 ASTRA 仓库。
+  raw_availability: not_applicable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    外部 ns-3 PR 是错误的 ownership boundary
+
+
+    What it proves: 项目不拥有公共 `astra-network-ns3` 仓库，错误 PR 被撤回，修改最终保留在私有 ASTRA 仓库。
+
+
+    Artifact: Issue #6 correction comment；closed PR `astra-sim/astra-network-ns3#20`。
+
+
+    Evidence type: negative process evidence.'
+- id: E004-08
+  kind: historical-report
+  summary: 最终实现集中在 ASTRA适配层，并以最小 nested ns-3 修改通过自有仓库合并。
+  location: migration/source/issue6.json
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 327ddbca045e516e16c630541f20149316a81ae9f6288bef1f295f00340f1a49
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: nested ns-3 21 changed lines；ASTRA adapter/frontend 150 additions。
+  raw_availability: not_applicable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    最终修改规模与 merge chain
+
+
+    What it proves: 最终实现集中在 ASTRA适配层，并以最小 nested ns-3 修改通过自有仓库合并。
+
+
+    Artifact: ASTRA `181c785`；bridge `06bee4e`；Issue #6 closeout comment。
+
+
+    Key numbers: nested ns-3 21 changed lines；ASTRA adapter/frontend 150 additions。
+
+
+    Evidence type: positive.'
+- id: E004-09
+  kind: historical-report
+  summary: code、bundle、trace、QP复用和 benchmark 在 closeout 前全部通过。
+  location: migration/source/issue6.json
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 327ddbca045e516e16c630541f20149316a81ae9f6288bef1f295f00340f1a49
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 43 Python tests；7/7 bundle smoke；Q=2 complete-path trace；persistent-QP smoke；12/12
+    coarse sweep。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    最终验证
+
+
+    What it proves: code、bundle、trace、QP复用和 benchmark 在 closeout 前全部通过。
+
+
+    Artifact: Issue #6 closeout comment 和 ExecPlan progress。
+
+
+    Key numbers: 43 Python tests；7/7 bundle smoke；Q=2 complete-path trace；persistent-QP
+    smoke；12/12 coarse sweep。
+
+
+    Evidence type: validation.'
+- id: E004-10
+  kind: historical-report
+  summary: 相同 run-root 逐策略 --force 会重写校准证据，性能值一致不代表旧行的原始trace仍被保留。
+  location: migration/source/ara/evidence/archive/issue6_linux_clos_reproduction/RESULTS.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 2a65fd554d7d3e7cb40bbc6178a7b4f2211545d6d4e34248202b31b0508a5020
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 16 次性能运行数值一致，但验收返回1并准确检测8条 hash 行 trace SHA 引用不匹配。原批次未删除、未篡改。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    共享目录强制校准覆盖的负结果
+
+
+    What it proves: 相同 run-root 逐策略 --force 会重写校准证据，性能值一致不代表旧行的原始trace仍被保留。
+
+
+    Artifact: `ara/evidence/archive/issue6_linux_clos_reproduction/RESULTS.md`；本地外层
+    `outputs/clos_reproduction_20260915/clos_reproduction_20260915_dXbRHT/comparison.json`
+    与完整原始产物。
+
+
+    Key numbers: 16 次性能运行数值一致，但验收返回1并准确检测8条 hash 行 trace SHA 引用不匹配。原批次未删除、未篡改。
+
+
+    Evidence type: negative archive-integrity evidence.'
+- id: E004-11
+  kind: historical-report
+  summary: 四个 R=1/hash 8 MB 案例可近似复现，固定环境重复结果一致，独立 trace 解析和参数配对通过。
+  location: migration/source/ara/evidence/archive/issue6_linux_clos_reproduction/RESULTS.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 2a65fd554d7d3e7cb40bbc6178a7b4f2211545d6d4e34248202b31b0508a5020
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 16次正式运行，0条验收错误，520条QP完成记录与520次校准路径复核、8组策略输入配对；hash四时间166.208/86.826/255.114/131.030us，历史最大偏差0.1843%。ELF
+    SHA256为 `7f9db19d50dafbe8d371c9f64cbef8b9e7b27cb7794fb1c62e6be8956ade67f4`，服务器独立重算一致。校准原始哈希跨运行可不同，但逐份匹配且路径语义通过。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    分策略隔离后的 Linux 复现与原始证据验收
+
+
+    What it proves: 四个 R=1/hash 8 MB 案例可近似复现，固定环境重复结果一致，独立 trace 解析和参数配对通过。
+
+
+    Artifact: `ara/evidence/archive/issue6_linux_clos_reproduction/RESULTS.md` 和 ExecPlan；正式服务器
+    `/home/mcnfsim/mcnf-smoke/experiments/clos_reproduction_20260915_cd9hTY`；本地外层
+    `outputs/clos_reproduction_20260915/clos_reproduction_20260915_cd9hTY/` 下 comparison.json、native_path_audit.json、console.log、provenance.txt
+    及全部 first/repeat 原始产物。工具位于外层 `outputs/clos_reproduction_20260915/`。
+
+
+    Key numbers: 16次正式运行，0条验收错误，520条QP完成记录与520次校准路径复核、8组策略输入配对；hash四时间166.208/86.826/255.114/131.030us，历史最大偏差0.1843%。ELF
+    SHA256为 `7f9db19d50dafbe8d371c9f64cbef8b9e7b27cb7794fb1c62e6be8956ade67f4`，服务器独立重算一致。校准原始哈希跨运行可不同，但逐份匹配且路径语义通过。
+
+
+    Evidence type: partial cross-build reproduction and positive scoped validation;
+    historical microdifference remains unexplained.
+
+
+    Validation: 包含新增记录的Linux隔离快照 `record_audit_MK3iYU` 全套70项测试通过（1.81秒）；原始日志在外层 `outputs/clos_reproduction_20260915/linux_record_validation.log`。ARA校验36
+    nodes、54 edges、33 evidence、12 claims、5 sessions。'
+- id: E004-12
+  kind: historical-report
+  summary: 仿真成功不代表外层执行检查正确；必须使用实际summary字段，失败批不冒充完整实验。
+  location: migration/source/ara/evidence/archive/issue6_linux_clos_scaling/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 3aa69f4b8657f07e02e36971170d4b22409b78bc4eb6362019aa63a9b07f88bb
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 首个8/2/1性能案例完成后误读size_bytes触发KeyError；正确字段size_bytes_per_pair。只修正包装脚本，重新执行为正式core_8QrZpA批，不改核心源码或原产物。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    扩规模外层检查字段错误与独立重跑
+
+
+    What it proves: 仿真成功不代表外层执行检查正确；必须使用实际summary字段，失败批不冒充完整实验。
+
+
+    Artifact: 工作区外层 `outputs/clos_scaling_20260916/clos_scaling_20260916_core_86J6hV/console.log`
+    与该目录原始run_scaling.sh；`ara/evidence/archive/issue6_linux_clos_scaling/ExecPlan.md`。
+
+
+    Key numbers: 首个8/2/1性能案例完成后误读size_bytes触发KeyError；正确字段size_bytes_per_pair。只修正包装脚本，重新执行为正式core_8QrZpA批，不改核心源码或原产物。
+
+
+    Evidence type: retained wrapper failure and recovery provenance.'
+- id: E004-13
+  kind: historical-report
+  summary: dXbRHT归档失败和core_86J6hV外层检查失败均已被同输入成功重跑覆盖，并非网络配置仍无法运行。
+  location: migration/source/ara/evidence/index.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 93ca4468aabd58f1e2659efd6113307b288a231a20683a1b759bdec2db11b4d9
+  reproduction:
+    notes: 此条是冻结源报告迁移，未重新运行。原命令/配置及原产物路径见报告或 migration/source/issue6-plan/ExecPlan.md；原运行目录未随本仓归档。
+  result: 9/15旧批16次仿真成功但8条hash校准引用失配；隔离目录后的16条引用均匹配，80个关键输入/FCT文件与旧批逐字节相同。9/16首例579554ns，检查size_bytes触发KeyError；修正size_bytes_per_pair后12次成功，首例5个关键文件相同。原失败证据完整保留。
+  raw_availability: unavailable
+  limitations: '本地文件SHA验证只证明已归档报告身份；未获取原始trace/FCT、历史macOS二进制或外层outputs目录，不证明本轮复现。
+
+    原索引段落：
+
+    近期两次失败的独立恢复核验
+
+
+    What it proves: dXbRHT归档失败和core_86J6hV外层检查失败均已被同输入成功重跑覆盖，并非网络配置仍无法运行。
+
+
+    Artifact: 外层 `outputs/clos_diagnosis_20260916/failure_recovery.md`；对应9/15失败/成功批和9/16失败/核心成功批的原始wrapper、console、summary、FCT及校准文件。
+
+
+    Key numbers: 9/15旧批16次仿真成功但8条hash校准引用失配；隔离目录后的16条引用均匹配，80个关键输入/FCT文件与旧批逐字节相同。9/16首例579554ns，检查size_bytes触发KeyError；修正size_bytes_per_pair后12次成功，首例5个关键文件相同。原失败证据完整保留。
+
+
+    Evidence type: independent negative-result recovery audit; no new claim about
+    historical rejected designs or unrun grid points.'
+- id: E005-01
+  kind: requirement
+  summary: 1MiB allocation 问题
+  location: migration/source/issue9-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: c3d28a40cab9bdf62bd0cd637b5f6380e210c3d99edc5fb3c9b51e8beb5dc23a
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 用户要求真实比较均匀分配和哈希分配，并且只有均匀分配稳定时才修改默认值。
+
+
+      Artifact: GitHub Issue #9；`docs/plans/issue9_round_robin_default/ExecPlan.md`。
+
+
+      Evidence type: requirement.'
+  result: 非数值历史证据：用户要求真实比较均匀分配和哈希分配，并且只有均匀分配稳定时才修改默认值。
+  raw_availability: not_applicable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-02
+  kind: historical_report
+  summary: 配对真实 allocation 结果
+  location: migration/source/issue9-plan/allocation_comparison.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 2ee77baeea85fbb4eba11e0eef886079663eb7bc54fca6a8c58e487d8ab10f23
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 12 组 topology/R 配对在两种 policy 下都成功，字节、FCT 守恒且 PFC 为 0。
+
+
+      Artifact: `docs/plans/issue9_round_robin_default/allocation_comparison.md`；`runs/issue9_1mib_allocation_compare/`。
+
+
+      Key numbers: 24 次真实 run；均匀分配相对 hash 平均 -5.02%，范围 0.00% 到 -8.90%，没有 case 变慢。
+
+
+      Evidence type: positive.'
+  result: 24 次真实 run；均匀分配相对 hash 平均 -5.02%，范围 0.00% 到 -8.90%，没有 case 变慢。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-03
+  kind: historical_report
+  summary: Hash imbalance 与 active QPs
+  location: migration/source/issue9-plan/allocation_comparison.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 2ee77baeea85fbb4eba11e0eef886079663eb7bc54fca6a8c58e487d8ab10f23
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 哈希分配不是严格均衡，并可能让配置 QP 未承载小包。
+
+
+      Artifact: allocation comparison 和 Issue #9 ExecPlan discoveries。
+
+
+      Key numbers: hash 最大 QP小包数差值 32；`(4,2,2,4)` 使用 382/384 QPs；均匀分配使用 384/384 且差值
+      0。
+
+
+      Evidence type: comparative.'
+  result: hash 最大 QP小包数差值 32；`(4,2,2,4)` 使用 382/384 QPs；均匀分配使用 384/384 且差值 0。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-04
+  kind: historical_report
+  summary: 默认值与 legacy 语义
+  location: migration/source/ara/evidence/index.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 93ca4468aabd58f1e2659efd6113307b288a231a20683a1b759bdec2db11b4d9
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: `round_robin` 成为 missing-field 和 benchmark 默认值，显式 hash 保留，旧
+      row 仍按 hash 解释。
+
+
+      Artifact: commit `b84a64e`；allocator 和 benchmark tests。
+
+
+      Evidence type: decision and validation.'
+  result: 非数值历史证据：`round_robin` 成为 missing-field 和 benchmark 默认值，显式 hash 保留，旧 row
+    仍按 hash 解释。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-05
+  kind: requirement
+  summary: SHA-addressed build requirement
+  location: migration/source/issue9-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: c3d28a40cab9bdf62bd0cd637b5f6380e210c3d99edc5fb3c9b51e8beb5dc23a
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 编译产物名需要 ASTRA short SHA，匹配时复用，不匹配时重建。
+
+
+      Artifact: Issue #9 ExecPlan `User Raw Prompts`；`docs/simulator/astra_ns3/STANDARD_EXPERIMENTS.md`。
+
+
+      Evidence type: requirement.'
+  result: 非数值历史证据：编译产物名需要 ASTRA short SHA，匹配时复用，不匹配时重建。
+  raw_availability: not_applicable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-06
+  kind: historical_report
+  summary: 只缓存 executable 或 ns-3 libraries 不完整
+  location: migration/source/ara/evidence/index.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 93ca4468aabd58f1e2659efd6113307b288a231a20683a1b759bdec2db11b4d9
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: binary 动态链接 mutable runtime libraries；遗漏 protobuf 或优先加载外部 protobuf
+      会破坏 ABI provenance。
+
+
+      Artifact: PR #10 reviews；commits `b259571`、`016d25d`。
+
+
+      Evidence type: negative review evidence.'
+  result: 非数值历史证据：binary 动态链接 mutable runtime libraries；遗漏 protobuf 或优先加载外部 protobuf
+    会破坏 ABI provenance。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-07
+  kind: historical_report
+  summary: 最终 cache manifest
+  location: migration/source/ara/evidence/index.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 93ca4468aabd58f1e2659efd6113307b288a231a20683a1b759bdec2db11b4d9
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: schema 2 保存完整 ASTRA SHA、platform、architecture、binary SHA256
+      和每个 ns-3/protobuf library SHA256；dirty tree 被拒绝。
+
+
+      Artifact: `scripts/astra_ns3_binary.py`；`tests/test_astra_ns3_binary.py`。
+
+
+      Evidence type: positive.'
+  result: 非数值历史证据：schema 2 保存完整 ASTRA SHA、platform、architecture、binary SHA256 和每个
+    ns-3/protobuf library SHA256；dirty tree 被拒绝。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-08
+  kind: historical_report
+  summary: 真实 cache reuse
+  location: migration/source/issue9-plan/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: c3d28a40cab9bdf62bd0cd637b5f6380e210c3d99edc5fb3c9b51e8beb5dc23a
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 不完整旧 cache 自动失效并重建，verified binary 和 libraries 随后完成真实 ASTRA
+      case。
+
+
+      Artifact: Issue #9 ExecPlan 和 closeout comment。
+
+
+      Key numbers: 1MiB `(N,M,Q,R)=(2,1,1,1)` case 重复得到 23.648us。
+
+
+      Evidence type: positive.'
+  result: 1MiB `(N,M,Q,R)=(2,1,1,1)` case 重复得到 23.648us。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-09
+  kind: historical_report
+  summary: 最终验证与 merge
+  location: migration/source/issue9.json
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: aee519d536c51c8d1268fe2ec0e9edeb8047f23a184e46f610705b46a3e9f830
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: allocation、cache 和 review fixes 在 merge 前通过。
+
+
+      Artifact: PR #10；merge `548ecd4`；Issue #9 closeout comment。
+
+
+      Key numbers: fully initialized worktree 51 tests passed；7 minimal bundle smoke；最终
+      reviewer 无 actionable correctness issue。
+
+
+      Evidence type: validation.'
+  result: fully initialized worktree 51 tests passed；7 minimal bundle smoke；最终 reviewer
+    无 actionable correctness issue。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-10
+  kind: historical_report
+  summary: 8 MB 均匀分配的 Linux 配对结果
+  location: migration/source/ara/evidence/archive/issue6_linux_clos_reproduction/RESULTS.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 2a65fd554d7d3e7cb40bbc6178a7b4f2211545d6d4e34248202b31b0508a5020
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 在本次四个 R=1 场景上，均匀分配相对hash不变或更快，纯带宽理论差距全部低于8%。
+
+
+      Artifact: 与 E006-11 相同的正式批次；`ara/evidence/archive/issue6_linux_clos_reproduction/RESULTS.md`
+      明确区分历史hash、本次hash和本次round_robin。
+
+
+      Key numbers: round_robin时间166.208/85.119/249.999/127.660us，gap为3.88/6.39875/4.16625/6.38333%，平均5.20708%；相对本次hash时延下降0/1.9660/2.0050/2.5719%。每逻辑流小包数差<=1，PFC事件全0；仅R=1四拓扑，不推广到全网格或1MiB。
+
+
+      Evidence type: positive bounded allocation comparison with explicit coverage
+      limits.'
+  result: round_robin时间166.208/85.119/249.999/127.660us，gap为3.88/6.39875/4.16625/6.38333%，平均5.20708%；相对本次hash时延下降0/1.9660/2.0050/2.5719%。每逻辑流小包数差<=1，PFC事件全0；仅R=1四拓扑，不推广到全网格或1MiB。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-11
+  kind: historical_report
+  summary: 11个扩规模单层Clos配置的固定版本重复验证
+  location: migration/source/ara/evidence/archive/issue6_linux_clos_scaling/RESULTS.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: c041d9f1b41517ae28bd8c7755a7f0e564eff2229781ebff2962d10cc22a53a8
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 已选择的8/16/32卡R=1均匀分配配置可以在同一Linux构建上稳定复跑，但不能推广全部场景低于8%。
+
+
+      Artifact: `ara/evidence/archive/issue6_linux_clos_scaling/RESULTS.md`；工作区外层
+      `outputs/clos_scaling_20260916/clos_scaling_20260916_core_8QrZpA` 与 `clos_scaling_20260916_extended_ftlIDF`，两者均保留scaling_audit.json/.md、完整输入、FCT及校准trace。工具为同父目录analyze_scaling.py和run_scaling.sh。
+
+
+      Key numbers: 11配置、22性能运行，两遍逐纳秒一致；两个audit均PASS/0 errors/0 missing。共41184条FCT和41184个校准QP逐跳核验；差距2.9975%～8.367142857%，10配置低于8%。8/2/4为151.714us，高于140us理想值8.36714%，保留未调参。time-v累计命令时间305.76秒，最大MaxRSS253748KiB，不是整机总峰值。实际ELF指纹与昨日相同。
+
+
+      Evidence type: bounded positive scaling evidence with explicit non-target row
+      and strengthened actual-input checks.'
+  result: 11配置、22性能运行，两遍逐纳秒一致；两个audit均PASS/0 errors/0 missing。共41184条FCT和41184个校准QP逐跳核验；差距2.9975%～8.367142857%，10配置低于8%。8/2/4为151.714us，高于140us理想值8.36714%，保留未调参。time-v累计命令时间305.76秒，最大MaxRSS253748KiB，不是整机总峰值。实际ELF指纹与昨日相同。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-12
+  kind: historical_report
+  summary: 32卡双链路PFC事件与解释边界
+  location: migration/source/ara/evidence/archive/issue6_linux_clos_scaling/RESULTS.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: c041d9f1b41517ae28bd8c7755a7f0e564eff2229781ebff2962d10cc22a53a8
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 本批32/2/2达到过流控阈值，不能称为无拥塞；事件数不等于丢包数或可直接相加的完成时间损失。
+
+
+      Artifact: core_8QrZpA的first/repeat下32/2/2正式案例output/pfc.txt；二者SHA256均为 `38604fc1770b2d4336ebb3932319316f68bd74f586bec6899987bc5fd0b7a2b2`。固定ASTRA源码qbb-net-device.cc和服务器实际common.h:140-144用于解释接收事件字段。
+
+
+      Key numbers: 每遍312条=156条收到pause+156条收到resume，1241.436～1260.041us，任务完成1293.096us、gap4.28194%。事件来自31卡、39个接口，各接口最后恢复。本批其他10配置PFC均0，包括gap8.36714%的8/2/4。
+
+
+      Evidence type: raw event analysis; causal latency contribution remains unresolved,
+      formal full-packet trace disabled.'
+  result: 每遍312条=156条收到pause+156条收到resume，1241.436～1260.041us，任务完成1293.096us、gap4.28194%。事件来自31卡、39个接口，各接口最后恢复。本批其他10配置PFC均0，包括gap8.36714%的8/2/4。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-13
+  kind: requirement
+  summary: 用户要求先做扎实当前阶段
+  location: migration/source/ara/evidence/archive/issue9_clos_gap_diagnosis/ExecPlan.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 02aa7d7a5d0db718de0444ddcc60cfe211dcd8dfc0b5bbd377df0d4257047397
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 优先级改为检查较大差距、能否优化及失败能否恢复，暂停求解器和新拓扑推进。
+
+
+      Artifact: `ara/evidence/archive/issue9_clos_gap_diagnosis/ExecPlan.md` 的User
+      Raw Prompts保留2026-09-16用户原文。
+
+
+      Evidence type: user requirement.'
+  result: 非数值历史证据：优先级改为检查较大差距、能否优化及失败能否恢复，暂停求解器和新拓扑推进。
+  raw_availability: not_applicable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-14
+  kind: historical_report
+  summary: 全量逐包轨迹与实际源码定位ACK集中
+  location: migration/source/ara/evidence/archive/issue9_clos_gap_diagnosis/RESULTS.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 8ccd769c165a8ee0e59e71784e4e4ced64fba6fdf7a5cdf1814d571e42fdc0b3
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 当前普通路由仅保留每邻居最后平行接口，使ACK集中；原两个目标的时间差与该瓶颈的链路工作量差高度吻合。
+
+
+      Artifact: `ara/evidence/archive/issue9_clos_gap_diagnosis/RESULTS.md`；外层outputs/clos_diagnosis_20260916下clos_diagnosis_20260916_Y5QyUr、full_n8_m2_q4_trace_audit.json、full_n8_m4_q2_trace_audit.json、trace_findings.md、gap_static.py/.json/.md、common_header_actual.h。头文件SHA256为2a08f0a225102c945f266bef4bcf07c2956f4ace9bb88a0c81ac0c0127211f73；归档SHA256
+      a38770a142ca6fec33ece673a7368d326fb9f02f03867668d160bcb60c627e2a。
+
+
+      Key numbers: 8次原配置诊断，10752条FCT独立验收PASS；8MB trace开关精确复现151714/148855ns。每份全量轨迹1203664记录、448000000字节、109424唯一包。Q4/Q2的ACK占用32/128与64/128有向端口，最忙链路发送占用149643/146773ns。实际源码nbr2if覆盖平行接口，与轨迹一致。4MB时间78171/75464ns，16MB301371/295625ns（各一次诊断）。
+
+
+      Evidence type: source inspection, trace conservation, per-link modeled timing
+      and bounded sensitivity experiment; no hardware timing claim.'
+  result: 8次原配置诊断，10752条FCT独立验收PASS；8MB trace开关精确复现151714/148855ns。每份全量轨迹1203664记录、448000000字节、109424唯一包。Q4/Q2的ACK占用32/128与64/128有向端口，最忙链路发送占用149643/146773ns。实际源码nbr2if覆盖平行接口，与轨迹一致。4MB时间78171/75464ns，16MB301371/295625ns（各一次诊断）。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E005-15
+  kind: historical_report
+  summary: 只补ACK回程缺失接口的受控候选
+  location: migration/source/ara/evidence/archive/issue9_clos_gap_diagnosis/RESULTS.md
+  identity:
+    commit: 9e2058fcca7b95389d30e81cb0e52ffe03e2e930
+    sha256: 8ccd769c165a8ee0e59e71784e4e4ced64fba6fdf7a5cdf1814d571e42fdc0b3
+  reproduction:
+    explanation: '未重新运行；复现入口和配置按下列冻结索引原文保存。
+
+      What it proves: 在4个指定配置中，只改变普通回程路由候选可复现改善；正向负载、ET、字节、协议和理论分母未变，Q1真no-op。
+
+
+      Artifact: 同父目录clos_ack_candidate_20260916_HWL1Gq、candidate_audit.json、candidate_n8_m2_q4_trace_audit.json、candidate_n8_m4_q2_trace_audit.json、ack_routes.py及run_ack_candidate.py/.sh。归档SHA256为5a2b0d08a0328c6573a11385edf16687d1ebb9a77d6b7e8adee03882e4270b8d。
+
+
+      Key numbers: 4配置8次，两遍相同；8/2/4、8/4/2、8/2/1、32/2/2分别147292/147006/579554/1280798ns，gap5.20857/5.00429/3.49179/3.29016%。新增路由384/256/0/2048；21472条FCT与224个ET文件核验PASS。两目标完整trace数据逐端口负载不变、ACK总数不变、覆盖均128/128端口；32卡PFC从312条变0，但未隔离PFC单独耗时。尚未集成默认实现。
+
+
+      Evidence type: controlled input-only candidate with repeated performance, negative
+      control, larger-case regression and independent input/trace audits.'
+  result: 4配置8次，两遍相同；8/2/4、8/4/2、8/2/1、32/2/2分别147292/147006/579554/1280798ns，gap5.20857/5.00429/3.49179/3.29016%。新增路由384/256/0/2048；21472条FCT与224个ET文件核验PASS。两目标完整trace数据逐端口负载不变、ACK总数不变、覆盖均128/128端口；32卡PFC从312条变0，但未隔离PFC单独耗时。尚未集成默认实现。
+  raw_availability: unavailable
+  limitations: location文档已归档且本次核验SHA256；原始运行、源码、PR审阅与动态库未取得。原文所列原产物SHA只是历史转录，非本次重算。
+- id: E002-01
+  kind: migration-validation
+  summary: 原Issue与目标Issue映射及冻结图版本
+  location: migration/mapping.json
+  identity:
+    sha256: a654d7913f6bfda5bd3d89e961746f3cfa533948b0485861e3610af14787f54d
+  reproduction:
+    command: 检查mapping与冻结源；无仿真命令
+    environment: Python 3.14.2, PyYAML 6.0.3
+    config: migration/mapping.json
+  result: 原Issue与目标Issue映射及冻结图版本
+  raw_availability: bundled
+  limitations: 仅迁移记录验证，不是原仿真实验复现。
+- id: E002-02
+  kind: migration-validation
+  summary: 实际迁移审计：43个idea、63条边、149个正文信息字段、48文件与43次提取
+  location: migration/VALIDATION.json
+  identity:
+    sha256: 653372ffdd9525ac538312a6e599db48a0f2c8577b802bdbee78f81dd7b99bef
+  reproduction:
+    command: python migration/check_import.py
+    environment: Python 3.14.2, PyYAML 6.0.3
+    config: migration/mapping.json
+  result: 实际迁移审计：43个idea、63条边、149个正文信息字段、48文件与43次提取
+  raw_availability: bundled
+  limitations: 仅迁移记录验证，不是原仿真实验复现。

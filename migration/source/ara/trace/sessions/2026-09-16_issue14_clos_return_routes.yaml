@@ -1,0 +1,48 @@
+session:
+  id: "2026-09-16_issue14_clos_return_routes"
+  timestamp: "2026-09-16T17:01:46+08:00"
+  source_issues: [14]
+  summary: "Integrated guarded bridge-only option one;100 formal performance runs and7 original smoke cases pass, with a preserved4MB target exception. Commits are pushed and PR15 is open with passing ARA CI and a verified Issue14 closing link; not merged."
+events_logged:
+  - type: decision
+    id: I014-N01
+    summary: "User selected native-hash return-route completion for the present task."
+  - type: question
+    id: I014-N02
+    summary: "ACK per-packet round robin remains a separate unverified direction."
+  - type: experiment
+    id: I014-N03
+    summary: "Completed formal integration, independent code review, Linux tests and100-run paired artifact validation."
+  - type: question
+    id: I014-N04
+    summary: "Preserved the4MB8/2/4 residual8.58286% and non-monotonic R observation without untested causal claims."
+ai_actions:
+  - action: "Created Issue #14 and its Development-linked branch through the authenticated website after CLI authentication timed out; created an isolated worktree and preserved pre-existing research records."
+    files_changed:
+      - docs/plans/issue14_clos_return_routes/ExecPlan.md
+      - ara/trace/exploration_tree.yaml
+      - ara/evidence/index.md
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/views/issue14.md
+      - ara/views/global.html
+      - tests/test_ara.py
+  - action: "Ran exact-build Linux regression in an isolated non-root remote workspace, independently audited inputs/FCT/ET/native paths, and pulled small evidence while retaining full traces remotely."
+    files_changed:
+      - docs/plans/issue14_clos_return_routes/RESULTS.md
+      - docs/plans/issue14_clos_return_routes/report_summary.json
+      - docs/plans/issue14_clos_return_routes/html/index.html
+  - action: "Pushed separate historical-evidence and feature commits, created PR15, and verified its Issue14 closing link and passing ARA CI. Delivery-status correction only; no new scientific claim or ARA node. GitHub reviewer output is not yet available."
+    files_changed:
+      - docs/plans/issue14_clos_return_routes/ExecPlan.md
+      - docs/plans/issue14_clos_return_routes/RESULTS.md
+      - ara/src/artifacts.md
+      - ara/trace/exploration_tree.yaml
+      - ara/trace/sessions/2026-09-16_issue14_clos_return_routes.yaml
+      - ara/views/global.html
+claims_touched: [C014-01]
+open_threads:
+  - "Historical no-review state is superseded by session2026-09-16_issue14_review_scaleup_boundary: two automated reviews arrived, fixes tested, latest-head approval and authorized merge pending."
+  - "4MB8/2/4 exceeds the historical8% reference; successor session quantifies static tail imbalance without claiming a full residual-cause decomposition or a hard8% pass criterion."
+  - "The pre-change Windows Darwin-path assertion failure is preserved; Linux full suite passes."
+  - "Other builds/topologies, full225 grid, solver Allreduce, hardware and ACK packet round robin remain unvalidated."

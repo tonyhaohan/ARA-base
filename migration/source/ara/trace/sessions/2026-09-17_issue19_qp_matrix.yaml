@@ -1,0 +1,40 @@
+session:
+  id: "2026-09-17_issue19_qp_matrix"
+  timestamp: "2026-09-17T16:06:00+08:00"
+  source_issues: [19]
+  summary: "Run four fixed-S4 paired QP-layout points, preserve a small negative result and keep the default and physical-model question unchanged."
+events_logged:
+  - type: decision
+    id: I019-N01
+    summary: "Freeze four points and24 runs with the existing source archive and binary; no simulator/default changes."
+  - type: experiment
+    id: I019-N02
+    summary: "All24 complete and pass raw evidence checks; three N16 gains and one N8 regression repeat exactly in time/FCT."
+  - type: experiment
+    id: I019-N03
+    summary: "Eight trace analyses preserve busy time, distinguish pause-heavy N16 tails from the no-pause N8 control, and retain confounding limitations."
+ai_actions:
+  - action: "Create Issue19 and its linked branch while preserving prior uncommitted work; freeze existing source and runtime, and add only external bounded orchestration/audit/analysis wrappers."
+    files_changed:
+      - docs/plans/issue19_double_clos_qp_matrix/ExecPlan.md
+  - action: "Run24 real cases as mcnfsim in a fresh limited directory, independently check raw inputs/FCT and eight trace analyses, pull and hash small evidence, and perform independent report review."
+    files_changed:
+      - docs/plans/issue19_double_clos_qp_matrix/RESULTS.md
+      - docs/plans/issue19_double_clos_qp_matrix/report_summary.json
+  - action: "Promote three mature nodes to the single global DAG, retain the measured negative result and unresolved model questions, then validate and regenerate the HTML view."
+    files_changed:
+      - ara/trace/exploration_tree.yaml
+      - ara/trace/sessions/2026-09-17_issue19_qp_matrix.yaml
+      - ara/evidence/index.md
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/staging/observations.yaml
+      - ara/views/issue19.md
+      - ara/views/global.html
+      - tests/test_ara.py
+claims_touched: [C019-01]
+open_threads:
+  - "Result-comment publication was blocked by external-disclosure approval; local draft is retained and the user was asked whether to publish a path-redacted summary to Issue19. No comment has been posted."
+  - "QP count and aggregate windows change together; pause overlap does not establish counterfactual latency savings or hardware equivalence."
+  - "Only four fixed-S4 synthetic All-to-all points; no complete grid, solver Allreduce, faults, UBMesh or NVLink calibration."
+  - "Original default and negative results are retained; no commit, push implementation, PR, merge, issue closure or cleanup in this session."

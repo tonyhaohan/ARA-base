@@ -1,0 +1,32 @@
+session:
+  id: "2026-07-12_issue9_reconstruction"
+  timestamp: "2026-07-12T10:39:00+08:00"
+  source_issues: [9]
+  summary: "Reconstructed Issue #9 allocation and build-cache exploration from its ExecPlan, comparison report, reviews and closeout evidence."
+events_logged:
+  - type: experiment
+    id: I009-N02
+    summary: "Recorded the 12 paired 1MiB real comparisons."
+  - type: experiment
+    id: I009-N03
+    summary: "Recorded hash imbalance and inactive configured QPs."
+  - type: decision
+    id: I009-N04
+    summary: "Recorded round-robin as default with explicit hash retained."
+  - type: dead_end
+    id: I009-N07
+    summary: "Recorded incomplete executable/runtime caching as superseded."
+  - type: dead_end
+    id: I009-N09
+    summary: "Recorded unverified protobuf loader precedence and its fix."
+ai_actions:
+  - action: "Read Issue #9 ExecPlan, allocation report, PR reviews, commits and closeout comment; reconstructed its global-DAG subgraph."
+    files_changed:
+      - "ara/trace/exploration_tree.yaml"
+      - "ara/logic/claims.md"
+      - "ara/src/artifacts.md"
+      - "ara/evidence/index.md"
+      - "ara/views/issue9.md"
+claims_touched: [C009-01, C009-02, C009-03]
+open_threads:
+  - "Repeat the build and representative allocation experiment on a clean Linux host."

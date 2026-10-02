@@ -1,0 +1,32 @@
+session:
+  id: "2026-09-17_issue17_pause_diagnosis"
+  timestamp: "2026-09-17T11:40:00+08:00"
+  source_issues: [17]
+  summary: "Read existing traces and actual source to separate shared-priority pause overlap from unsupported causal or fixed-QP-share explanations; no new simulations or network changes."
+events_logged:
+  - type: experiment
+    id: I017-N06
+    summary: "Exact pause/serialization intersection explains the timing coincidence of most S4 access idle; preserve same-leaf residual bytes and S1/S2 controls."
+  - type: experiment
+    id: I017-N07
+    summary: "Reconstruct cumulative-ACK windows: S4 cross-leaf QPs never have positive window-blocked pending time; S2/S1 often do, and all three port idle partitions match."
+ai_actions:
+  - action: "Create independent offline analyzers/tests and source snapshots in a new external output directory; preserve all original simulator runs."
+    files_changed:
+      - docs/plans/issue17_double_clos_scaling/DIAGNOSIS.md
+      - docs/plans/issue17_double_clos_scaling/ExecPlan.md
+  - action: "Record bounded observational findings in the single global ARA; no simulator, bridge runtime or input-parameter changes."
+    files_changed:
+      - ara/trace/exploration_tree.yaml
+      - ara/trace/sessions/2026-09-17_issue17_pause_diagnosis.yaml
+      - ara/evidence/index.md
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/views/issue17.md
+      - ara/views/global.html
+claims_touched: [C017-02]
+open_threads:
+  - "Pause/idle overlap is not the counterfactual improvement from disabling PFC."
+  - "Window/ACK state now explains the different eligible sets, but this is not complete RR/callback or causal intervention modeling."
+  - "The intended RDMA or scale-up hardware arbitration/flow-control contract remains to be fixed before recommending changes."
+  - "No new simulation, solver integration, Allreduce validation, NVLink hardware calibration, GitHub write, commit, push, PR or merge in this diagnosis turn."

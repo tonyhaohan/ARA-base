@@ -1,0 +1,40 @@
+session:
+  id: "2026-09-16_issue9_clos_gap_diagnosis"
+  timestamp: "2026-09-16T11:40:00+08:00"
+  source_issues: [6, 9]
+  summary: "Paused expansion, confirmed failed-batch recovery, diagnosed omitted ACK parallel routes and tested an isolated route-completion candidate."
+events_logged:
+  - type: decision
+    id: I009-N14
+    summary: "User prioritized consolidating current gaps and failures over advancing to solver/new topologies."
+  - type: experiment
+    id: I006-N15
+    summary: "Both recent wrapper/archive failures have successful same-input reruns; original failures preserved."
+  - type: experiment
+    id: I009-N15
+    summary: "Two full performance traces and actual source identify ACK concentration on last parallel links."
+  - type: experiment
+    id: I009-N16
+    summary: "Four repeated candidate cases improve or remain unchanged without changing data loads or protocol parameters."
+  - type: question
+    id: I009-N17
+    summary: "Formal integration, wider regression, remaining overhead and PFC-only timing remain open."
+ai_actions:
+  - action: "Created isolated diagnostic and candidate inputs, retained raw traces and source evidence, independently checked FCT/ET/routing/packet conservation, and kept original implementation unchanged."
+    files_changed:
+      - ara/evidence/archive/issue9_clos_gap_diagnosis/ExecPlan.md
+      - ara/evidence/archive/issue9_clos_gap_diagnosis/RESULTS.md
+      - ara/trace/exploration_tree.yaml
+      - ara/logic/claims.md
+      - ara/evidence/index.md
+      - ara/src/artifacts.md
+      - ara/staging/observations.yaml
+      - ara/views/issue6.md
+      - ara/views/issue9.md
+      - ara/views/global.html
+      - tests/test_ara.py
+claims_touched: [C009-06, C009-07]
+open_threads:
+  - "Candidate input only; no default implementation or PR yet."
+  - "Do not equate32-card12.298us route benefit with PFC-only latency."
+  - "Larger grids, alternate versions and solver/Allreduce/new topologies remain unvalidated."

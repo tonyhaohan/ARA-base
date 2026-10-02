@@ -1,0 +1,36 @@
+id: S003-IMPORT-20261002
+timestamp: '2026-10-02T13:55:46+08:00'
+issues:
+- 3
+summary: 迁移原Issue3的11个idea、3个claim和9个叙述证据；原始run不可获取。
+events:
+- id: EV003-IMPORT-20261002
+  action: import
+  timestamp: '2026-10-02T13:55:46+08:00'
+  provenance: ai-executed
+  refs:
+  - I003-N01
+  - I003-N02
+  - I003-N03
+  - I003-N04
+  - I003-N05
+  - I003-N06
+  - I003-N07
+  - I003-N08
+  - I003-N09
+  - I003-N10
+  - I003-N11
+  - C003-01
+  - C003-02
+  - C003-03
+  - E003-01
+  - E003-02
+  - E003-03
+  - E003-04
+  - E003-05
+  - E003-06
+  - E003-07
+  - E003-08
+  - E003-09
+  rationale: 从冻结源9e2058fcca7b95389d30e81cb0e52ffe03e2e930迁移；保留原时间、失败和出处，逆转next为depends_on，并映射Issue6→4、Issue9→5。源accepted
+    claims映射为supported表示历史记录的支持状态，未新增实证或重建过去转换事件。

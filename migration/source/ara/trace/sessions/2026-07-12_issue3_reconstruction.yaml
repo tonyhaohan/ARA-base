@@ -1,0 +1,31 @@
+session:
+  id: "2026-07-12_issue3_reconstruction"
+  timestamp: "2026-07-12T18:05:00+08:00"
+  source_issues: [3, 6, 11]
+  summary: "Restored Issue #3 as the failed exploration that motivated the Issue #6 explicit QP/path interface."
+events_logged:
+  - type: dead_end
+    id: I003-N03
+    summary: "Recorded that raw solverPath metadata did not control ASTRA multi-lane injection."
+  - type: experiment
+    id: I003-N04
+    summary: "Preserved lane-expanded ranks as capacity evidence with changed GPU-rank semantics."
+  - type: experiment
+    id: I003-N08
+    summary: "Preserved high-K QP hash striping as partial and unstable rather than accepted routing."
+  - type: dead_end
+    id: I003-N10
+    summary: "Recorded the exhausted backend/hash tuning direction."
+  - type: pivot
+    id: I003-N11
+    summary: "Connected the Issue #3 failure to Issue #6 explicit configuration-driven QP paths."
+ai_actions:
+  - action: "Read the historical Issue #3 ARA artifact, ExecPlan, GitHub comments and branch head; adapted the exploration to the current five-type global schema."
+    files_changed:
+      - "ara/trace/exploration_tree.yaml"
+      - "ara/logic/claims.md"
+      - "ara/src/artifacts.md"
+      - "ara/evidence/index.md"
+      - "ara/views/issue3.md"
+claims_touched: [C003-01, C003-02, C003-03, C006-01]
+open_threads: []

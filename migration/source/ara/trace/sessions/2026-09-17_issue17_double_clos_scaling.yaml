@@ -1,0 +1,46 @@
+session:
+  id: "2026-09-17_issue17_double_clos_scaling"
+  timestamp: "2026-09-17T11:14:00+08:00"
+  source_issues: [17]
+  summary: "Ran eight fixed larger two-tier configurations; preserved high gaps and identified same-leaf completion tails, access idle and shared-priority pause without changing network physics."
+events_logged:
+  - type: decision
+    id: I017-N01
+    summary: "Freeze eight scale/size points and retain both capacity bounds."
+  - type: experiment
+    id: I017-N02
+    summary: "Release completed audit state, preserve old inputs/evidence and add bounded runner tests."
+  - type: experiment
+    id: I017-N03
+    summary: "24 new real runs complete and repeat;16-card4-spine gaps remain33%-35%."
+  - type: experiment
+    id: I017-N04
+    summary: "Inspect FCT/PFC and link timelines; high-gap tail is same-leaf with substantial access idle."
+  - type: question
+    id: I017-N05
+    summary: "Separate scheduling/pause/window effects before proposing physically justified changes."
+ai_actions:
+  - action: "Extend only the bounded bridge runner and audit-state lifetime, not simulator or solver physics."
+    files_changed:
+      - scripts/run_double_clos_smoke.py
+      - scripts/audit_double_clos.py
+      - tests/test_double_clos_smoke.py
+      - tests/test_double_clos_audit.py
+      - tests/test_ara.py
+  - action: "Preserve both low/high gaps, source/evidence identity and scope in the single global ARA."
+    files_changed:
+      - docs/plans/issue17_double_clos_scaling/ExecPlan.md
+      - docs/plans/issue17_double_clos_scaling/RESULTS.md
+      - docs/plans/issue17_double_clos_scaling/report_summary.json
+      - ara/trace/exploration_tree.yaml
+      - ara/evidence/index.md
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/views/issue17.md
+      - ara/views/global.html
+claims_touched: [C017-01]
+open_threads:
+  - "Same-priority data/ACK pause and eligible per-QP scheduling are mechanisms, not a completed causal latency decomposition."
+  - "Do not integrate solver or redesign the model merely to reduce high ideal gaps."
+  - "No full Allreduce, faulty topology, UBMesh or NVLink hardware calibration."
+  - "Issue17 depends on unmerged Issue16; no new PR/merge or cleanup authorized this turn."

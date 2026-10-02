@@ -1,0 +1,57 @@
+session:
+  id: "2026-09-16_issue14_review_scaleup_boundary"
+  timestamp: "2026-09-16T18:31:00+08:00"
+  source_issues: [14]
+  summary: "Addressed automated provenance/report reviews, validated two actual mixed-policy runs, quantified static payload tails, and documented NVLink/RDMA boundaries. Merge requires both automated reviewers to agree."
+events_logged:
+  - type: decision
+    id: I014-N05
+    summary: "Physical credibility and honest limitations take precedence over8%; scale-up is the research target."
+  - type: experiment
+    id: I014-N06
+    summary: "Legacy-only retained-result bypass closed; real inputs/FCT unchanged and stale evidence rejected."
+  - type: experiment
+    id: I014-N07
+    summary: "Static tail explains a1.5808% capacity-bound increase for4MB8/2/4, not the full8.58286% gap."
+  - type: question
+    id: I014-N08
+    summary: "Product-specific NVLink mapping and hardware calibration remain open."
+ai_actions:
+  - action: "Fixed benchmark validation and policy summaries; added regression tests and missing archival frontmatter without changing old report bodies."
+    files_changed:
+      - scripts/run_clos_qp_benchmark.py
+      - tests/test_clos_qp_benchmark.py
+      - docs/simulator/astra_ns3/STANDARD_EXPERIMENTS.md
+      - ara/evidence/archive/issue6_linux_clos_reproduction/ExecPlan.md
+      - ara/evidence/archive/issue6_linux_clos_reproduction/RESULTS.md
+  - action: "Recorded requirement changes, primary-source model boundaries, targeted Linux regression and offline payload audit."
+    files_changed:
+      - docs/plans/issue14_clos_return_routes/ExecPlan.md
+      - docs/plans/issue14_clos_return_routes/RESULTS.md
+      - docs/plans/issue14_clos_return_routes/SCALEUP_MODEL_BOUNDARY.md
+      - ara/trace/exploration_tree.yaml
+      - ara/evidence/index.md
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/views/issue14.md
+      - ara/views/global.html
+      - tests/test_ara.py
+  - action: "Second review fixed same-label generate-only evidence loss and added in-repo ACK coverage audit;210 Linux tests pass and all four retained full traces reproduce prior per-port counts."
+    files_changed:
+      - scripts/run_clos_qp_benchmark.py
+      - tests/test_clos_qp_benchmark.py
+      - scripts/audit_clos_return_coverage.py
+      - tests/test_clos_return_coverage.py
+  - action: "Additional inline review relocates six unchanged historical reports into ARA evidence, updates pointers, expands CI to the full Python suite, and documents cache/trace constants. No new node or scientific claim; simulation inputs/results unchanged."
+    files_changed:
+      - ara/evidence/archive/README.md
+      - ara/evidence/index.md
+      - ara/src/artifacts.md
+      - .github/workflows/ara-validate.yml
+      - docs/simulator/astra_ns3/STANDARD_EXPERIMENTS.md
+claims_touched: [C014-01]
+open_threads:
+  - "Await both automated reviewers on the fixed head before authorized merge."
+  - "Dynamic tail and protocol residual are not fully isolated;8% is no longer a pass/fail gate."
+  - "Target NVLink generation, unpublished arbitration/flow-control parameters and hardware calibration remain open."
+  - "Complete225-grid, solver Allreduce, double-layer, failures and ACK round-robin remain out of the verified scope."

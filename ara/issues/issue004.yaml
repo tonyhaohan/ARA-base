@@ -1,0 +1,22 @@
+issue: 4
+title: 历史迁移：配置驱动的 RDMA QP 绑定与 bridge 侧分组
+url: https://github.com/tonyhaohan/ARA-base/issues/4
+branch: codex/issue4-bridge-qp-history
+status: completed
+outcome: partial
+depends_on:
+- 3
+summary: 历史最小QP配置、完整路径及persistent reuse已采纳；代表性12例支持R=1。后续Linux四例近似复现并保留归档/包装失败与恢复；历史微差及完整原证据尚未取得。Issue级以原设计起因Issue3为前提；后期对Issue5成果的引用保留于细粒度idea边，避免把交错研究投影成Issue环。
+record: ara/issues/issue004.md
+execplan: docs/plans/issue004_bridge_qp_history/ExecPlan.md
+best_ideas:
+- id: I004-N05
+  reason: 完整路径alias机制在四条Q=2路径双向trace有历史验证，替代不稳定route-slot ABI。
+- id: I004-N15
+  reason: 区分归档/包装失败与仿真失败并保留同输入恢复核验。
+promising_ideas:
+- id: I004-N13
+  reason: 四例Linux近似复现且重复稳定；取得旧二进制与输入可追查0.1843%历史微差。
+open_questions:
+- 历史macOS原始输入/二进制与Linux最多0.1843%微差原因未确定。
+- R=2/4完整网格及论文级原始归档覆盖仍未建立。

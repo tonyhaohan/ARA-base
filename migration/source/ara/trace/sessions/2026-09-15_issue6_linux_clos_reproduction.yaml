@@ -1,0 +1,37 @@
+session:
+  id: "2026-09-15_issue6_linux_clos_reproduction"
+  timestamp: "2026-09-15T19:15:00+08:00"
+  source_issues: [6, 9]
+  summary: "Reproduced four R=1 8MB Clos configurations on Linux, paired allocation policies, retained an archive-integrity failure and repeated under isolated output roots."
+events_logged:
+  - type: dead_end
+    id: I006-N11
+    summary: "Shared force-run calibration overwrote eight earlier trace references; original batch retained."
+  - type: pivot
+    id: I006-N12
+    summary: "Separated each policy/pass output root without simulator or parameter changes."
+  - type: experiment
+    id: I006-N13
+    summary: "Four hash R=1 cases repeat exactly locally and approximately reproduce historical displayed values."
+  - type: experiment
+    id: I009-N11
+    summary: "Uniform allocation gives 3.88%-6.39875% ideal-bandwidth gaps on the four tested configurations."
+ai_actions:
+  - action: "Ran the unchanged fixed-version ASTRA runner, audited raw FCT and trace, checked paired inputs, and archived scoped results."
+    files_changed:
+      - ara/evidence/archive/issue6_linux_clos_reproduction/ExecPlan.md
+      - ara/evidence/archive/issue6_linux_clos_reproduction/RESULTS.md
+      - ara/trace/exploration_tree.yaml
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/evidence/index.md
+      - ara/staging/observations.yaml
+      - ara/views/issue6.md
+      - ara/views/issue9.md
+      - ara/views/global.html
+      - tests/test_ara.py
+claims_touched: [C009-04]
+open_threads:
+  - "Q001 remains open for broader R=2/4 and full-grid Linux archival work."
+  - "Historical hash microdifference root cause is not yet determined."
+  - "Core runner shared-directory force-calibration behavior remains unchanged; keep policy/pass roots isolated."

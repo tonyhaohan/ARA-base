@@ -1,0 +1,30 @@
+session:
+  id: "2026-09-17_issue17_model_review"
+  timestamp: "2026-09-17T12:03:00+08:00"
+  source_issues: [17]
+  summary: "Check primary RDMA/NVLink sources against pinned simulator behavior; preserve the baseline and distinguish model sensitivity from hardware realism."
+events_logged:
+  - type: experiment
+    id: I017-N08
+    summary: "Literature and source review only: common-priority PFC is plausible, exact QP scheduling/windows and NVLink equivalence remain uncalibrated."
+ai_actions:
+  - action: "Parallel read-only primary-source and interface review; collect bounded source ledgers outside the repository and write a Chinese synthesis."
+    files_changed:
+      - docs/plans/issue17_double_clos_scaling/MODEL_REVIEW.md
+      - docs/plans/issue17_double_clos_scaling/ExecPlan.md
+  - action: "Add one mature finding to the single global ARA, preserve the open physical-model question and label the QP-layout control as unexecuted."
+    files_changed:
+      - ara/trace/exploration_tree.yaml
+      - ara/trace/sessions/2026-09-17_issue17_model_review.yaml
+      - ara/evidence/index.md
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/views/issue17.md
+      - ara/views/global.html
+      - tests/test_ara.py
+claims_touched: [C017-03]
+open_threads:
+  - "No specific NIC or NVLink generation and matched hardware measurement is selected; capacity-bound gap is not hardware error."
+  - "Finite PFC timer semantics differ from the normal-link explicit-resume abstraction; impact is not isolated and adding expiry without refresh is not a validated fix."
+  - "Equal-QP input sensitivity requires a bounded runner extension and independent controls for aggregate-window effects; no candidate was generated or simulated."
+  - "No model/default/config changes, remote runs, GitHub writes, commit, push, PR or merge this turn."

@@ -1,0 +1,23 @@
+issue: 5
+title: 历史迁移：QP均匀分配、构建缓存与单层Clos差距诊断
+url: https://github.com/tonyhaohan/ARA-base/issues/5
+branch: codex/issue5-bridge-allocation-history
+status: completed
+outcome: partial
+depends_on:
+- 4
+summary: 历史1MiB配对支持均匀分配默认；缓存不完整和loader优先级失败保留。后续有限Linux重复与ACK候选证据保留，未覆盖全网格且PFC单独因果耗时未隔离。本次完成的是迁移，不是重现实验。
+record: ara/issues/issue005.md
+execplan: docs/plans/issue005_bridge_allocation_history/ExecPlan.md
+best_ideas:
+- id: I005-N02
+  reason: 12组共享路径/QP/二进制配对隔离分配策略，24次成功，均匀分配平均快5.02%，保留有限覆盖边界。
+- id: I005-N16
+  reason: 四配置重复、Q1负对照及输入不变检查支持ACK路线补全候选，保留尚未集成与因果限制。
+promising_ideas:
+- id: I005-N17
+  reason: 从已定位接口遗漏走向正式受限选项和更广回归，明确剩余协议开销与PFC单独贡献待检验。
+open_questions:
+- 全225网格、R2/R4 Linux归档与跨构建稳健性尚未由本Issue证明。
+- ACK候选仅隔离输入；正式集成属于源后续Issue，不并入本次范围。
+- 32卡PFC单独导致的延迟尚未隔离。

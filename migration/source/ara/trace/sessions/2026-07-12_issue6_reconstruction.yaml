@@ -1,0 +1,32 @@
+session:
+  id: "2026-07-12_issue6_reconstruction"
+  timestamp: "2026-07-12T10:39:00+08:00"
+  source_issues: [6]
+  summary: "Reconstructed Issue #6 QP configuration exploration from its ExecPlan, requirements, issue comments and durable results."
+events_logged:
+  - type: dead_end
+    id: I006-N02
+    summary: "Preserved high-K automatic hash as the route that must not be repeated."
+  - type: pivot
+    id: I006-N05
+    summary: "Recorded destination aliases and one-output-per-hop routes as the complete-path mechanism."
+  - type: experiment
+    id: I006-N06
+    summary: "Recorded persistent QP FIFO and sequence-state reuse."
+  - type: dead_end
+    id: I006-N07
+    summary: "Recorded the withdrawn external ns-3 PR and repository-ownership lesson."
+  - type: decision
+    id: I006-N09
+    summary: "Recorded R=1 as the measured default."
+ai_actions:
+  - action: "Read Issue #6 ExecPlan, QP requirements, GitHub comments, merge history and coarse results; reconstructed its global-DAG subgraph."
+    files_changed:
+      - "ara/trace/exploration_tree.yaml"
+      - "ara/logic/claims.md"
+      - "ara/src/artifacts.md"
+      - "ara/evidence/index.md"
+      - "ara/views/issue6.md"
+claims_touched: [C006-01, C006-02, C006-03, C006-04]
+open_threads:
+  - "Run a clean Linux build and paper-grade formal archive sweep."

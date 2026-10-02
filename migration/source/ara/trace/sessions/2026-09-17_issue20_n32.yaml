@@ -1,0 +1,39 @@
+session:
+  id: "2026-09-17_issue20_n32"
+  timestamp: "2026-09-17T16:53:00+08:00"
+  source_issues: [20]
+  summary: "Completed18 bounded fixed-S4 real runs with exact old-anchor/repeats, raw-input/FCT/load audits and resource gates; N32 gains coexist with more pause events."
+events_logged:
+  - type: decision
+    id: I020-N01
+    summary: "User confirms only the fixed four-spine extension, not a global four-QP default."
+  - type: experiment
+    id: I020-N02
+    summary: "N16/8MB old-anchor and N32/1MB plus4MB pairs pass18 real runs and verified pullback; no simulator/default change."
+  - type: experiment
+    id: I020-N03
+    summary: "Same-leaf unsent tails and pause-coincident idle shrink, while N32 pause event counts increase; retain QP/window causal limits."
+ai_actions:
+  - action: "Create a plan-only private Issue and linked branch, preserve prior dirty work, extend only N32/S4 allowance and tests, and freeze the exact two-file overlay."
+    files_changed:
+      - scripts/run_double_clos_smoke.py
+      - tests/test_double_clos_smoke.py
+      - docs/plans/issue20_double_clos_n32/ExecPlan.md
+  - action: "Maintain one global DAG and a read-only Issue entry; separate mocks/input-only checks from actual simulations."
+    files_changed:
+      - ara/trace/exploration_tree.yaml
+      - ara/evidence/index.md
+      - ara/views/issue20.md
+      - ara/trace/sessions/2026-09-17_issue20_n32.yaml
+  - action: "Run the frozen Linux source/tests and19 real simulations including one separate minimal; verify1528 pulled files, report finite outcomes and retain all raw evidence."
+    files_changed:
+      - docs/plans/issue20_double_clos_n32/RESULTS.md
+      - docs/plans/issue20_double_clos_n32/report_summary.json
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - tests/test_ara.py
+claims_touched: [C020-01]
+open_threads:
+  - "Finite two-leaf/four-spine results only; not a full double-Clos grid, solver Allreduce or real-NIC/NVLink calibration."
+  - "Retain original default, high-gap and slower rows; QP/window confounding and hardware-equivalence questions remain."
+  - "No PR, merge, commit, push implementation, result-publication retry or cleanup in this session."

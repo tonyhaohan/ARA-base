@@ -1,0 +1,34 @@
+session:
+  id: "2026-09-16_issue6_linux_clos_scaling"
+  timestamp: "2026-09-16T11:11:16+08:00"
+  source_issues: [6, 9]
+  summary: "Expanded frozen uniform-allocation Clos through selected 32-card cases; retained an over-8-percent row, PFC evidence, and an outer-wrapper failure."
+events_logged:
+  - type: dead_end
+    id: I006-N14
+    summary: "A summary-field mismatch stopped the first wrapper; original artifacts retained and fresh batches used after correction."
+  - type: experiment
+    id: I009-N12
+    summary: "Eleven configurations, 22 performance runs, exact repeat times and strengthened actual-input/native-path audits."
+  - type: question
+    id: I009-N13
+    summary: "Separate the cause of 8/2/4 residual gap from the observed 32/2/2 PFC latency contribution."
+ai_actions:
+  - action: "Ran frozen code with size/resource guards, pulled scoped archives, audited actual inputs and raw results, and interpreted PFC receive events using matched source."
+    files_changed:
+      - ara/evidence/archive/issue6_linux_clos_scaling/ExecPlan.md
+      - ara/evidence/archive/issue6_linux_clos_scaling/RESULTS.md
+      - ara/trace/exploration_tree.yaml
+      - ara/logic/claims.md
+      - ara/evidence/index.md
+      - ara/src/artifacts.md
+      - ara/staging/observations.yaml
+      - ara/views/issue6.md
+      - ara/views/issue9.md
+      - ara/views/global.html
+      - tests/test_ara.py
+claims_touched: [C009-05]
+open_threads:
+  - "8/2/4 gap exceeds the eight-percent direction; underlying component contributions are not isolated."
+  - "PFC counts do not establish completion-time cost or performance-run packet loss."
+  - "Q001, full grid/R=2/4, real NodeArcResult, double-layer Clos and UBMesh remain unfinished."

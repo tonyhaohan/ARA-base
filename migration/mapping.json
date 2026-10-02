@@ -1,0 +1,16 @@
+{
+  "source_repository": "tonyhaohan/mcnf-sim-bridge",
+  "source_commit": "9e2058fcca7b95389d30e81cb0e52ffe03e2e930",
+  "destination_repository": "tonyhaohan/ARA-base",
+  "issues": {
+    "3": 3,
+    "6": 4,
+    "9": 5
+  },
+  "integration_issue": 2,
+  "branches": {
+    "3": "codex/issue3-bridge-clos-history",
+    "4": "codex/issue4-bridge-qp-history",
+    "5": "codex/issue5-bridge-allocation-history"
+  }
+}

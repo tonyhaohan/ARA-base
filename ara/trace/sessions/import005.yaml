@@ -1,0 +1,609 @@
+id: S005-import-20261002
+timestamp: '2026-10-02T13:56:15+08:00'
+issues:
+- 5
+summary: 将源Issue9的17个原生节点与历史证据导入v1；没有新增仿真。
+events:
+- id: EV005-import-20261002
+  action: import
+  timestamp: '2026-10-02T13:56:15+08:00'
+  provenance: ai-executed
+  refs:
+  - I005-N01
+  - I005-N02
+  - I005-N03
+  - I005-N04
+  - I005-N05
+  - I005-N06
+  - I005-N07
+  - I005-N08
+  - I005-N09
+  - I005-N10
+  - I005-N11
+  - I005-N12
+  - I005-N13
+  - I005-N14
+  - I005-N15
+  - I005-N16
+  - I005-N17
+  - E005-01
+  - E005-02
+  - E005-03
+  - E005-04
+  - E005-05
+  - E005-06
+  - E005-07
+  - E005-08
+  - E005-09
+  - E005-10
+  - E005-11
+  - E005-12
+  - E005-13
+  - E005-14
+  - E005-15
+  - C005-01
+  - C005-02
+  - C005-03
+  - C005-04
+  - C005-05
+  - C005-06
+  - C005-07
+  - O005-20260916-residual-gap-and-pfc
+  rationale: 依据mapping和冻结源记录转换结构。源sessions作为历史来源保留，不生成未保存的历史capture/crystallize。
+- id: EV005-round2-I005-N05
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: I005-N05
+  before:
+    id: I005-N05
+    type: decision
+    title: Preserve legacy hash rows and distinguish active QPs
+    status: accepted
+    provenance: ai-suggested
+    timestamp: '2026-07-11T23:44:00+08:00'
+    issue: 5
+    depends_on:
+    - I005-N03
+    - I005-N04
+    primary_dependency: I005-N03
+    record: ara/issues/issue005.md#I005-N05
+    evidence:
+    - E005-03
+    - E005-04
+  after:
+    id: I005-N05
+    type: decision
+    title: Preserve legacy hash rows and distinguish active QPs
+    status: accepted
+    provenance: ai-suggested
+    timestamp: '2026-07-11T23:44:00+08:00'
+    issue: 5
+    depends_on:
+    - I005-N03
+    - I005-N04
+    primary_dependency: I005-N04
+    record: ara/issues/issue005.md#I005-N05
+    evidence:
+    - E005-03
+    - E005-04
+  rationale: 新默认决定直接导致保护旧hash行语义的需求。
+- id: EV005-round2-I005-N09
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: I005-N09
+  before:
+    id: I005-N09
+    type: dead_end
+    title: External protobuf path precedence bypasses the verified cache
+    status: rejected
+    provenance: ai-executed
+    timestamp: '2026-07-12T00:35:00+08:00'
+    issue: 5
+    depends_on:
+    - I005-N07
+    - I005-N08
+    primary_dependency: I005-N07
+    record: ara/issues/issue005.md#I005-N09
+    evidence:
+    - E005-06
+  after:
+    id: I005-N09
+    type: dead_end
+    title: External protobuf path precedence bypasses the verified cache
+    status: rejected
+    provenance: ai-executed
+    timestamp: '2026-07-12T00:35:00+08:00'
+    issue: 5
+    depends_on:
+    - I005-N07
+    - I005-N08
+    primary_dependency: I005-N08
+    record: ara/issues/issue005.md#I005-N09
+    evidence:
+    - E005-06
+  rationale: 已建立verified cache后，外部protobuf优先级才构成具体绕过该cache的问题。
+- id: EV005-round2-I005-N12
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: I005-N12
+  before:
+    id: I005-N12
+    type: experiment
+    title: Fixed-version single-layer Clos scales reproducibly through selected 32-card cases
+    status: accepted
+    provenance: ai-executed
+    timestamp: '2026-09-16T11:11:16+08:00'
+    issue: 5
+    depends_on:
+    - I004-N14
+    - I004-N13
+    primary_dependency: I004-N14
+    record: ara/issues/issue005.md#I005-N12
+    evidence:
+    - E005-11
+    - E005-12
+  after:
+    id: I005-N12
+    type: experiment
+    title: Fixed-version single-layer Clos scales reproducibly through selected 32-card cases
+    status: accepted
+    provenance: ai-executed
+    timestamp: '2026-09-16T11:11:16+08:00'
+    issue: 5
+    depends_on:
+    - I004-N14
+    - I004-N13
+    primary_dependency: I004-N13
+    record: ara/issues/issue005.md#I005-N12
+    evidence:
+    - E005-11
+    - E005-12
+  rationale: 四个Linux基础配置的可复现验证是扩规模实验主要知识前提；wrapper失败保留为并列依赖。
+- id: EV005-round2-C005-01
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: C005-01
+  before:
+    id: C005-01
+    statement: 在相同 QP组上，均匀分配提供严格的小包数平衡，并在 1MiB 配对实验中比哈希分配更稳定且平均仿真时间更低。
+    conditions: 历史冻结源记录条件；仅覆盖原文指定配置和版本，不代表目标仓复现或硬件验证。
+    status: supported
+    provenance: unknown
+    falsification: 代表性复跑中均匀分配不稳定、出现系统性变慢或比哈希分配更不均衡。
+    evidence:
+    - E005-02
+    - E005-03
+    - E005-04
+    depends_on:
+    - C004-01
+    - C004-04
+    source_note: '源claim Status=accepted，根据已有报告转为历史 supported；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-01：均匀分配比哈希分配更适合作为默认
+
+
+      - Statement: 在相同 QP组上，均匀分配提供严格的小包数平衡，并在 1MiB 配对实验中比哈希分配更稳定且平均仿真时间更低。
+
+      - Status: accepted
+
+      - Falsification criteria: 代表性复跑中均匀分配不稳定、出现系统性变慢或比哈希分配更不均衡。
+
+      - Proof: E009-02, E009-03, E009-04
+
+      - Dependencies: C006-01, C006-04
+
+
+      '
+  after:
+    id: C005-01
+    statement: 在相同 QP组上，均匀分配提供严格的小包数平衡，并在 1MiB 配对实验中比哈希分配更稳定且平均仿真时间更低。
+    conditions: 1MiB=1048576B，4096B小包，四个代表性N/M/Q拓扑、R=1/2/4共12配对；相同binary/path/QP/native校准。支持仅限该有限比较。 历史报告支持，原raw未取得，迁移未重跑。
+    status: supported
+    provenance: unknown
+    falsification: 代表性复跑中均匀分配不稳定、出现系统性变慢或比哈希分配更不均衡。
+    evidence:
+    - E005-02
+    - E005-03
+    - E005-04
+    depends_on:
+    - C004-01
+    - C004-04
+    source_note: '源claim Status=accepted，逐项按已有报告和新迁移契约判断科学状态；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-01：均匀分配比哈希分配更适合作为默认
+
+
+      - Statement: 在相同 QP组上，均匀分配提供严格的小包数平衡，并在 1MiB 配对实验中比哈希分配更稳定且平均仿真时间更低。
+
+      - Status: accepted
+
+      - Falsification criteria: 代表性复跑中均匀分配不稳定、出现系统性变慢或比哈希分配更不均衡。
+
+      - Proof: E009-02, E009-03, E009-04
+
+      - Dependencies: C006-01, C006-04
+
+
+      '
+  rationale: 第二轮逐项判断：经验结果保留限定supported；规范性必须主张为untested，补明实际条件。
+- id: EV005-round2-C005-02
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: C005-02
+  before:
+    id: C005-02
+    statement: 缺少 allocation 字段的旧 benchmark row 必须按生成时的哈希分配解释，不能因默认值变化而重新标注。
+    conditions: 历史冻结源记录条件；仅覆盖原文指定配置和版本，不代表目标仓复现或硬件验证。
+    status: supported
+    provenance: unknown
+    falsification: 找到旧 row 实际由均匀分配生成的证据。
+    evidence:
+    - E005-04
+    depends_on: []
+    source_note: '源claim Status=accepted，根据已有报告转为历史 supported；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-02：历史 allocation 语义必须保持
+
+
+      - Statement: 缺少 allocation 字段的旧 benchmark row 必须按生成时的哈希分配解释，不能因默认值变化而重新标注。
+
+      - Status: accepted
+
+      - Falsification criteria: 找到旧 row 实际由均匀分配生成的证据。
+
+      - Proof: E009-04
+
+
+      '
+  after:
+    id: C005-02
+    statement: 缺少 allocation 字段的旧 benchmark row 必须按生成时的哈希分配解释，不能因默认值变化而重新标注。
+    conditions: 这是历史流程/实现约束：旧行应保持生成时allocation语义，缓存应验证source/binary/runtime。历史测试与cache-hit报告支持具体实现行为，但不经验性证明“必须”或更弱验证永远不充分。
+    status: untested
+    provenance: unknown
+    falsification: 找到旧 row 实际由均匀分配生成的证据。
+    evidence:
+    - E005-04
+    depends_on: []
+    source_note: '源claim Status=accepted，逐项按已有报告和新迁移契约判断科学状态；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-02：历史 allocation 语义必须保持
+
+
+      - Statement: 缺少 allocation 字段的旧 benchmark row 必须按生成时的哈希分配解释，不能因默认值变化而重新标注。
+
+      - Status: accepted
+
+      - Falsification criteria: 找到旧 row 实际由均匀分配生成的证据。
+
+      - Proof: E009-04
+
+
+      '
+  rationale: 第二轮逐项判断：经验结果保留限定supported；规范性必须主张为untested，补明实际条件。
+- id: EV005-round2-C005-03
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: C005-03
+  before:
+    id: C005-03
+    statement: 可复用 ASTRA 编译产物必须同时验证完整 source SHA、平台、binary 和实际加载的 ns-3/protobuf runtime libraries。
+    conditions: 历史冻结源记录条件；仅覆盖原文指定配置和版本，不代表目标仓复现或硬件验证。
+    status: supported
+    provenance: unknown
+    falsification: 只验证 binary 仍能排除 ABI 混用并提供同等 provenance。
+    evidence:
+    - E005-06
+    - E005-07
+    - E005-08
+    depends_on: []
+    source_note: '源claim Status=accepted，根据已有报告转为历史 supported；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-03：仿真编译缓存必须绑定 source、binary 和 runtime
+
+
+      - Statement: 可复用 ASTRA 编译产物必须同时验证完整 source SHA、平台、binary 和实际加载的 ns-3/protobuf runtime libraries。
+
+      - Status: accepted
+
+      - Falsification criteria: 只验证 binary 仍能排除 ABI 混用并提供同等 provenance。
+
+      - Proof: E009-06, E009-07, E009-08
+
+
+      '
+  after:
+    id: C005-03
+    statement: 可复用 ASTRA 编译产物必须同时验证完整 source SHA、平台、binary 和实际加载的 ns-3/protobuf runtime libraries。
+    conditions: 这是历史流程/实现约束：旧行应保持生成时allocation语义，缓存应验证source/binary/runtime。历史测试与cache-hit报告支持具体实现行为，但不经验性证明“必须”或更弱验证永远不充分。
+    status: untested
+    provenance: unknown
+    falsification: 只验证 binary 仍能排除 ABI 混用并提供同等 provenance。
+    evidence:
+    - E005-06
+    - E005-07
+    - E005-08
+    depends_on: []
+    source_note: '源claim Status=accepted，逐项按已有报告和新迁移契约判断科学状态；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-03：仿真编译缓存必须绑定 source、binary 和 runtime
+
+
+      - Statement: 可复用 ASTRA 编译产物必须同时验证完整 source SHA、平台、binary 和实际加载的 ns-3/protobuf runtime libraries。
+
+      - Status: accepted
+
+      - Falsification criteria: 只验证 binary 仍能排除 ABI 混用并提供同等 provenance。
+
+      - Proof: E009-06, E009-07, E009-08
+
+
+      '
+  rationale: 第二轮逐项判断：经验结果保留限定supported；规范性必须主张为untested，补明实际条件。
+- id: EV005-round2-C005-04
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: C005-04
+  before:
+    id: C005-04
+    statement: 在本轮固定版本、400Gbps、500ns每链路、4096B小包、每有向卡对8,000,000B和四个指定N/M/Q配置下，round_robin的纯带宽理论差距为3.88%～6.39875%，重复运行完成时间一致。
+    conditions: 历史冻结源记录条件；仅覆盖原文指定配置和版本，不代表目标仓复现或硬件验证。
+    status: supported
+    provenance: unknown
+    falsification: 相同配置复跑产生不可解释的不一致，或原始字节/路径/输入配对核验失败；不将该有限结论推广到其他规模或数据量。
+    evidence:
+    - E004-11
+    - E005-10
+    depends_on:
+    - C004-02
+    - C005-02
+    source_note: '源claim Status=accepted，根据已有报告转为历史 supported；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-04：已测四个 8 MB/R=1 Linux 场景的均匀分配差距低于 8%
+
+
+      - Statement: 在本轮固定版本、400Gbps、500ns每链路、4096B小包、每有向卡对8,000,000B和四个指定N/M/Q配置下，round_robin的纯带宽理论差距为3.88%～6.39875%，重复运行完成时间一致。
+
+      - Status: accepted
+
+      - Falsification criteria: 相同配置复跑产生不可解释的不一致，或原始字节/路径/输入配对核验失败；不将该有限结论推广到其他规模或数据量。
+
+      - Proof: E006-11, E009-10
+
+      - Dependencies: C006-02, C009-02
+
+
+      '
+  after:
+    id: C005-04
+    statement: 在本轮固定版本、400Gbps、500ns每链路、4096B小包、每有向卡对8,000,000B和四个指定N/M/Q配置下，round_robin的纯带宽理论差距为3.88%～6.39875%，重复运行完成时间一致。
+    conditions: 固定Linux版本；每有向卡对8000000B、400Gbps、每链路500ns、4096B、R1；仅四指定拓扑，报告时间166.208/85.119/249.999/127.660us。
+      历史报告支持，原raw未取得，迁移未重跑。
+    status: supported
+    provenance: unknown
+    falsification: 相同配置复跑产生不可解释的不一致，或原始字节/路径/输入配对核验失败；不将该有限结论推广到其他规模或数据量。
+    evidence:
+    - E004-11
+    - E005-10
+    depends_on:
+    - C004-02
+    - C005-02
+    source_note: '源claim Status=accepted，逐项按已有报告和新迁移契约判断科学状态；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-04：已测四个 8 MB/R=1 Linux 场景的均匀分配差距低于 8%
+
+
+      - Statement: 在本轮固定版本、400Gbps、500ns每链路、4096B小包、每有向卡对8,000,000B和四个指定N/M/Q配置下，round_robin的纯带宽理论差距为3.88%～6.39875%，重复运行完成时间一致。
+
+      - Status: accepted
+
+      - Falsification criteria: 相同配置复跑产生不可解释的不一致，或原始字节/路径/输入配对核验失败；不将该有限结论推广到其他规模或数据量。
+
+      - Proof: E006-11, E009-10
+
+      - Dependencies: C006-02, C009-02
+
+
+      '
+  rationale: 第二轮逐项判断：经验结果保留限定supported；规范性必须主张为untested，补明实际条件。
+- id: EV005-round2-C005-05
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: C005-05
+  before:
+    id: C005-05
+    statement: 固定版本、8MB有向卡对、400Gbps/500ns链路、4096B小包、R=1均匀分配下，本批11个指定8/16/32卡配置通过实际输入和原始结果验收，两遍完成时间相同。10个gap低于8%，8/2/4为8.36714%；32/2/2每遍有156条PFC暂停和156条恢复记录。
+    conditions: 历史冻结源记录条件；仅覆盖原文指定配置和版本，不代表目标仓复现或硬件验证。
+    status: supported
+    provenance: unknown
+    falsification: 相同固定配置不能复跑，或输入、FCT、路径核验失败；不把此有限结论推广到未测规模、多阶段Allreduce或真机。
+    evidence:
+    - E005-11
+    - E005-12
+    depends_on:
+    - C004-02
+    - C005-03
+    source_note: '源claim Status=accepted，根据已有报告转为历史 supported；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-05：本批11个扩规模配置重复稳定，但8%不是已验证的全局上界
+
+
+      - Statement: 固定版本、8MB有向卡对、400Gbps/500ns链路、4096B小包、R=1均匀分配下，本批11个指定8/16/32卡配置通过实际输入和原始结果验收，两遍完成时间相同。10个gap低于8%，8/2/4为8.36714%；32/2/2每遍有156条PFC暂停和156条恢复记录。
+
+      - Status: accepted
+
+      - Falsification criteria: 相同固定配置不能复跑，或输入、FCT、路径核验失败；不把此有限结论推广到未测规模、多阶段Allreduce或真机。
+
+      - Proof: E009-11, E009-12
+
+      - Dependencies: C006-02, C009-03
+
+
+      '
+  after:
+    id: C005-05
+    statement: 固定版本、8MB有向卡对、400Gbps/500ns链路、4096B小包、R=1均匀分配下，本批11个指定8/16/32卡配置通过实际输入和原始结果验收，两遍完成时间相同。10个gap低于8%，8/2/4为8.36714%；32/2/2每遍有156条PFC暂停和156条恢复记录。
+    conditions: 固定Linux版本；8000000B/有向卡对、400Gbps/500ns、4096B、R1 round_robin；11指定8/16/32卡配置，各两遍；不涵盖全225网格。
+      历史报告支持，原raw未取得，迁移未重跑。
+    status: supported
+    provenance: unknown
+    falsification: 相同固定配置不能复跑，或输入、FCT、路径核验失败；不把此有限结论推广到未测规模、多阶段Allreduce或真机。
+    evidence:
+    - E005-11
+    - E005-12
+    depends_on:
+    - C004-02
+    - C005-03
+    source_note: '源claim Status=accepted，逐项按已有报告和新迁移契约判断科学状态；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-05：本批11个扩规模配置重复稳定，但8%不是已验证的全局上界
+
+
+      - Statement: 固定版本、8MB有向卡对、400Gbps/500ns链路、4096B小包、R=1均匀分配下，本批11个指定8/16/32卡配置通过实际输入和原始结果验收，两遍完成时间相同。10个gap低于8%，8/2/4为8.36714%；32/2/2每遍有156条PFC暂停和156条恢复记录。
+
+      - Status: accepted
+
+      - Falsification criteria: 相同固定配置不能复跑，或输入、FCT、路径核验失败；不把此有限结论推广到未测规模、多阶段Allreduce或真机。
+
+      - Proof: E009-11, E009-12
+
+      - Dependencies: C006-02, C009-03
+
+
+      '
+  rationale: 第二轮逐项判断：经验结果保留限定supported；规范性必须主张为untested，补明实际条件。
+- id: EV005-round2-C005-06
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: C005-06
+  before:
+    id: C005-06
+    statement: 固定Linux构建的8/2/4和8/4/2全量性能trace显示ACK仅经过每对相邻节点最后平行链路；实际common.h以节点对为键覆盖接口。正向显式别名路径不受相同遗漏影响，导致ACK集中而正向数据可使用全部链路。
+    conditions: 历史冻结源记录条件；仅覆盖原文指定配置和版本，不代表目标仓复现或硬件验证。
+    status: supported
+    provenance: unknown
+    falsification: 匹配版本/配置的完整trace或实际普通路由表显示ACK已均匀覆盖全部平行接口，或源码证据与所用二进制不匹配。
+    evidence:
+    - E005-14
+    depends_on:
+    - C004-02
+    - C005-03
+    source_note: '源claim Status=accepted，根据已有报告转为历史 supported；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-06：已测原版高Q场景存在ACK回程平行接口遗漏
+
+
+      - Statement: 固定Linux构建的8/2/4和8/4/2全量性能trace显示ACK仅经过每对相邻节点最后平行链路；实际common.h以节点对为键覆盖接口。正向显式别名路径不受相同遗漏影响，导致ACK集中而正向数据可使用全部链路。
+
+      - Status: accepted
+
+      - Falsification criteria: 匹配版本/配置的完整trace或实际普通路由表显示ACK已均匀覆盖全部平行接口，或源码证据与所用二进制不匹配。
+
+      - Proof: E009-14
+
+      - Dependencies: C006-02, C009-03
+
+
+      '
+  after:
+    id: C005-06
+    statement: 固定Linux构建的8/2/4和8/4/2全量性能trace显示ACK仅经过每对相邻节点最后平行链路；实际common.h以节点对为键覆盖接口。正向显式别名路径不受相同遗漏影响，导致ACK集中而正向数据可使用全部链路。
+    conditions: 实际冻结Linux构建；8/2/4与8/4/2原版完整trace及actual common.h；仅此普通路由和正向alias机制。 历史报告支持，原raw未取得，迁移未重跑。
+    status: supported
+    provenance: unknown
+    falsification: 匹配版本/配置的完整trace或实际普通路由表显示ACK已均匀覆盖全部平行接口，或源码证据与所用二进制不匹配。
+    evidence:
+    - E005-14
+    depends_on:
+    - C004-02
+    - C005-03
+    source_note: '源claim Status=accepted，逐项按已有报告和新迁移契约判断科学状态；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-06：已测原版高Q场景存在ACK回程平行接口遗漏
+
+
+      - Statement: 固定Linux构建的8/2/4和8/4/2全量性能trace显示ACK仅经过每对相邻节点最后平行链路；实际common.h以节点对为键覆盖接口。正向显式别名路径不受相同遗漏影响，导致ACK集中而正向数据可使用全部链路。
+
+      - Status: accepted
+
+      - Falsification criteria: 匹配版本/配置的完整trace或实际普通路由表显示ACK已均匀覆盖全部平行接口，或源码证据与所用二进制不匹配。
+
+      - Proof: E009-14
+
+      - Dependencies: C006-02, C009-03
+
+
+      '
+  rationale: 第二轮逐项判断：经验结果保留限定supported；规范性必须主张为untested，补明实际条件。
+- id: EV005-round2-C005-07
+  action: revise
+  timestamp: '2026-10-02T14:03:18+08:00'
+  provenance: ai-executed
+  subject: C005-07
+  before:
+    id: C005-07
+    statement: 保留QP、正向路由、ET、字节、400Gbps/500ns和原ACK/PFC，只补遗漏普通目的IP路由后，8/2/4和8/4/2差距从8.36714%/6.325%降至5.20857%/5.00429%，32/2/2从4.28194%降至3.29016%，Q1对照不变；各两遍相同。候选尚未替换默认实现。
+    conditions: 历史冻结源记录条件；仅覆盖原文指定配置和版本，不代表目标仓复现或硬件验证。
+    status: supported
+    provenance: unknown
+    falsification: 同配置复跑不一致、独立守恒/输入检查失败，或实际改善需减数据、关协议、改带宽。此结论不承诺全网格收益或跨版本通用修复。
+    evidence:
+    - E005-15
+    depends_on:
+    - C005-06
+    source_note: '源claim Status=accepted，根据已有报告转为历史 supported；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-07：隔离ACK回程补全候选在四个指定配置中有效且保留数据语义
+
+
+      - Statement: 保留QP、正向路由、ET、字节、400Gbps/500ns和原ACK/PFC，只补遗漏普通目的IP路由后，8/2/4和8/4/2差距从8.36714%/6.325%降至5.20857%/5.00429%，32/2/2从4.28194%降至3.29016%，Q1对照不变；各两遍相同。候选尚未替换默认实现。
+
+      - Status: accepted
+
+      - Falsification criteria: 同配置复跑不一致、独立守恒/输入检查失败，或实际改善需减数据、关协议、改带宽。此结论不承诺全网格收益或跨版本通用修复。
+
+      - Proof: E009-15
+
+      - Dependencies: C009-06
+
+
+      '
+  after:
+    id: C005-07
+    statement: 保留QP、正向路由、ET、字节、400Gbps/500ns和原ACK/PFC，只补遗漏普通目的IP路由后，8/2/4和8/4/2差距从8.36714%/6.325%降至5.20857%/5.00429%，32/2/2从4.28194%降至3.29016%，Q1对照不变；各两遍相同。候选尚未替换默认实现。
+    conditions: 8000000B/有向卡对、400Gbps/500ns、4096B、R1；8/2/4、8/4/2、8/2/1、32/2/2各两遍；只补普通回程接口，正向QP、数据与协议保留；未合入默认。
+      历史报告支持，原raw未取得，迁移未重跑。
+    status: supported
+    provenance: unknown
+    falsification: 同配置复跑不一致、独立守恒/输入检查失败，或实际改善需减数据、关协议、改带宽。此结论不承诺全网格收益或跨版本通用修复。
+    evidence:
+    - E005-15
+    depends_on:
+    - C005-06
+    source_note: '源claim Status=accepted，逐项按已有报告和新迁移契约判断科学状态；源未保存claim作者，使用unknown。原始段落：
+
+      ### C009-07：隔离ACK回程补全候选在四个指定配置中有效且保留数据语义
+
+
+      - Statement: 保留QP、正向路由、ET、字节、400Gbps/500ns和原ACK/PFC，只补遗漏普通目的IP路由后，8/2/4和8/4/2差距从8.36714%/6.325%降至5.20857%/5.00429%，32/2/2从4.28194%降至3.29016%，Q1对照不变；各两遍相同。候选尚未替换默认实现。
+
+      - Status: accepted
+
+      - Falsification criteria: 同配置复跑不一致、独立守恒/输入检查失败，或实际改善需减数据、关协议、改带宽。此结论不承诺全网格收益或跨版本通用修复。
+
+      - Proof: E009-15
+
+      - Dependencies: C009-06
+
+
+      '
+  rationale: 第二轮逐项判断：经验结果保留限定supported；规范性必须主张为untested，补明实际条件。

@@ -1,0 +1,21 @@
+{
+  "source_commit": "9e2058fcca7b95389d30e81cb0e52ffe03e2e930",
+  "source_issues": [
+    3,
+    6,
+    9
+  ],
+  "destination_issues": [
+    3,
+    4,
+    5
+  ],
+  "imported_ideas": 43,
+  "preserved_edges": 63,
+  "preserved_payload_fields": 149,
+  "frozen_source_files_verified": 48,
+  "exact_memo_extractions": 43,
+  "schema": "passed",
+  "historical_simulations_rerun": false,
+  "scope": "Structure, preserved original payload and local archive hashes; not empirical reproduction."
+}

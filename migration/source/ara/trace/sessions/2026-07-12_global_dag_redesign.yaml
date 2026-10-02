@@ -1,0 +1,18 @@
+session:
+  id: "2026-07-12_global_dag_redesign"
+  timestamp: "2026-07-12T10:59:00+08:00"
+  source_issues: [11]
+  summary: "Replaced per-Issue ARA artifacts with one project-wide research DAG after checking the original ARA paper."
+events_logged:
+  - type: decision
+    id: I011-N01
+    summary: "Reserved for the global-DAG architecture decision added by Issue #11."
+ai_actions:
+  - action: "Read the ARA paper and official artifact, designed the project-wide schema, migrated Issue #6/#9 nodes and added mandatory validation."
+    files_changed:
+      - "docs/guideline/ara-research-protocol.md"
+      - "ara/PAPER.md"
+      - "ara/trace/exploration_tree.yaml"
+      - "scripts/validate_ara.py"
+claims_touched: []
+open_threads: []

@@ -1,0 +1,18 @@
+issue: 2
+title: 迁移集成与记录系统验收
+url: https://github.com/tonyhaohan/ARA-base/issues/2
+branch: codex/issue2-bridge-history
+status: completed
+outcome: success
+depends_on: []
+summary: 三个无上下文GPT-6.1 Sol worker迁移原Issue3/6/9；集成逐字段核验43个idea、63条依赖及149个原文字段，按需读取和本地归档哈希通过。此success仅表示记录迁移验收成功，未复跑历史仿真。
+record: ara/issues/issue002.md
+execplan: docs/plans/issue002_bridge_history/ExecPlan.md
+best_ideas:
+- id: I002-N02
+  reason: 逐项对照冻结源，验证节点、依赖、正文与提取边界，而不只检查YAML可解析。
+promising_ideas:
+- id: I002-N01
+  reason: 两层独立索引和按需纪要已被无上下文迁移及新读者使用，可供后续研究项目复用。
+open_questions:
+- 原实验raw traces、运行环境与二进制未迁入，完整科学复现仍需要另行获取。

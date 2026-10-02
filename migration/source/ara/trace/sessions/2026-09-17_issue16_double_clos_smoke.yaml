@@ -1,0 +1,44 @@
+session:
+  id: "2026-09-17_issue16_double_clos_smoke"
+  timestamp: "2026-09-17T10:35:00+08:00"
+  source_issues: [16]
+  summary: "Ran four bounded two-tier synthetic cases with full path/conservation checks and exact repeats; inventoried saved NodeArcResult and phase-contract gaps without solver changes."
+events_logged:
+  - type: decision
+    id: I016-N01
+    summary: "Use a hand-checkable four-card topology without changing native simulator physics."
+  - type: experiment
+    id: I016-N02
+    summary: "Twelve real runs pass; four performance configurations repeat with2.62%-3.98% gaps to directional payload bounds."
+  - type: question
+    id: I016-N03
+    summary: "Larger scale, size sensitivity and residual causal attribution remain open."
+  - type: question
+    id: I016-N04
+    summary: "Saved artifacts exist, but versioned tree/fragment and multi-phase conversion remains unimplemented."
+ai_actions:
+  - action: "Added bounded runner and independent raw-file/trace audit with synthetic failure cases; preserved all old code paths."
+    files_changed:
+      - scripts/run_double_clos_smoke.py
+      - scripts/audit_double_clos.py
+      - tests/test_double_clos_smoke.py
+      - tests/test_double_clos_audit.py
+      - tests/test_ara.py
+  - action: "Recorded exact runtime/source evidence, offline audit hardening and limited scientific claims."
+    files_changed:
+      - docs/plans/issue16_double_clos_smoke/ExecPlan.md
+      - docs/plans/issue16_double_clos_smoke/RESULTS.md
+      - docs/plans/issue16_double_clos_smoke/report_summary.json
+      - docs/plans/issue16_double_clos_smoke/NODEARC_INTERFACE_PRECHECK.md
+      - ara/trace/exploration_tree.yaml
+      - ara/evidence/index.md
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/views/issue16.md
+      - ara/views/global.html
+claims_touched: [C016-01]
+open_threads:
+  - "Only the four specified cases have real two-tier evidence; no larger grid, faults, UBMesh or solver Allreduce."
+  - "Payload capacity gap is not a hardware error metric; remaining protocol/dynamic costs are not causally decomposed."
+  - "No simulator/submodule edits; no NVLink hardware calibration."
+  - "Local review is not the two online approvals required before merge; new PR requires explicit authorization."

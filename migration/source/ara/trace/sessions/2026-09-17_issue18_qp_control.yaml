@@ -1,0 +1,40 @@
+session:
+  id: "2026-09-17_issue18_qp_control"
+  timestamp: "2026-09-17T12:21:00+08:00"
+  source_issues: [18]
+  summary: "Implement a bounded same-leaf QP input control, execute six real paired runs, and retain the default and hardware-model uncertainty."
+events_logged:
+  - type: decision
+    id: I018-N01
+    summary: "User approved the one-point fixed-physics QP-layout sensitivity control, not simulator changes or default promotion."
+  - type: experiment
+    id: I018-N02
+    summary: "Six real runs and independent raw-input/FCT/repeat audit pass; old baseline reproduced and candidate completion reduced."
+  - type: experiment
+    id: I018-N03
+    summary: "Frozen pause/window analyzers explain observed timing changes without asserting pure fairness or hardware equivalence."
+ai_actions:
+  - action: "Create Issue18 and its linked branch; preserve uncommitted Issue17 research records while extending only the double-CLOS runner and tests."
+    files_changed:
+      - scripts/run_double_clos_smoke.py
+      - tests/test_double_clos_smoke.py
+      - docs/plans/issue18_double_clos_qp_control/ExecPlan.md
+  - action: "Freeze source/overlays and runtime identity, run as mcnfsim in a fresh limited directory, independently audit and pull back small evidence without overwriting old experiments."
+    files_changed:
+      - docs/plans/issue18_double_clos_qp_control/RESULTS.md
+      - docs/plans/issue18_double_clos_qp_control/report_summary.json
+  - action: "Record three mature findings in the single global DAG and retain the open physical-model question."
+    files_changed:
+      - ara/trace/exploration_tree.yaml
+      - ara/trace/sessions/2026-09-17_issue18_qp_control.yaml
+      - ara/evidence/index.md
+      - ara/logic/claims.md
+      - ara/src/artifacts.md
+      - ara/views/issue18.md
+      - ara/views/global.html
+      - tests/test_ara.py
+claims_touched: [C018-01]
+open_threads:
+  - "QP count and aggregate per-flow windows change together; no pure fairness attribution or hardware calibration."
+  - "One N16/S4/8MB synthetic All-to-all point only; other sizes, topologies, solver Allreduce and NVLink remain unvalidated for this candidate."
+  - "Default remains one same-leaf QP; no simulator/gitlink changes, commit, push, PR, merge, issue closure or cleanup in this session."

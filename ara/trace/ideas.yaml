@@ -1,5 +1,633 @@
 ideas:
-  - id: I000-N00
-    type: root
-    title: 研究起点
-    depends_on: []
+- id: I000-N00
+  type: root
+  title: 研究起点
+  depends_on: []
+- id: I002-N01
+  issue: 2
+  type: decision
+  title: 保留原始事实并建立两层独立索引
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-10-02T14:18:36+08:00'
+  depends_on:
+  - I000-N00
+  primary_dependency: I000-N00
+  record: ara/issues/issue002.md
+  evidence:
+  - E002-01
+- id: I002-N02
+  issue: 2
+  type: experiment
+  title: 按冻结源逐字段验证迁移和按需读取
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-10-02T14:18:36+08:00'
+  depends_on:
+  - I002-N01
+  primary_dependency: I002-N01
+  record: ara/issues/issue002.md
+  evidence:
+  - E002-02
+- id: I003-N01
+  type: question
+  title: Can native ASTRA reproduce the Clos N/M/Q target with realistic positive
+    gap?
+  status: accepted
+  provenance: user
+  timestamp: '2026-07-03T00:00:00+08:00'
+  issue: 3
+  depends_on:
+  - I000-N00
+  primary_dependency: I000-N00
+  record: ara/issues/issue003.md#I003-N01
+  evidence:
+  - E003-01
+- id: I003-N02
+  type: experiment
+  title: A calibrated bridge estimate matches the target grid but is not simulator
+    evidence
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-07-03T00:05:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N01
+  primary_dependency: I003-N01
+  record: ara/issues/issue003.md#I003-N02
+  evidence:
+  - E003-02
+- id: I003-N03
+  type: dead_end
+  title: Bundle solverPath does not control raw-rank ASTRA multi-lane injection
+  status: rejected
+  provenance: ai-executed
+  timestamp: '2026-07-03T00:50:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N01
+  - I003-N02
+  primary_dependency: I003-N02
+  record: ara/issues/issue003.md#I003-N03
+  evidence:
+  - E003-03
+- id: I003-N04
+  type: experiment
+  title: Lane-expanded ranks expose capacity but change the modeled system
+  status: partial
+  provenance: ai-executed
+  timestamp: '2026-07-03T01:20:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N03
+  primary_dependency: I003-N03
+  record: ara/issues/issue003.md#I003-N04
+  evidence:
+  - E003-04
+- id: I003-N05
+  type: decision
+  title: Narrow the calibration grid to powers of two
+  status: accepted
+  provenance: user
+  timestamp: '2026-07-03T09:09:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N04
+  primary_dependency: I003-N04
+  record: ara/issues/issue003.md#I003-N05
+  evidence:
+  - E003-01
+  - E003-04
+- id: I003-N06
+  type: question
+  title: Can native RDMA QP and ECMP semantics meet the target without explicit routes?
+  status: open
+  provenance: user
+  timestamp: '2026-07-03T14:00:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N03
+  - I003-N04
+  - I003-N05
+  primary_dependency: I003-N04
+  record: ara/issues/issue003.md#I003-N06
+  evidence:
+  - E003-05
+  - E003-06
+  - E003-07
+  - E003-08
+- id: I003-N07
+  type: dead_end
+  title: Native all-to-all preserves standard semantics but misses M/Q scaling
+  status: rejected
+  provenance: ai-executed
+  timestamp: '2026-07-03T14:40:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N06
+  primary_dependency: I003-N06
+  record: ara/issues/issue003.md#I003-N07
+  evidence:
+  - E003-05
+- id: I003-N08
+  type: experiment
+  title: High-K QP hash striping improves throughput but is unstable and indirect
+  status: partial
+  provenance: ai-executed
+  timestamp: '2026-07-03T16:10:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N06
+  - I003-N07
+  primary_dependency: I003-N07
+  record: ara/issues/issue003.md#I003-N08
+  evidence:
+  - E003-06
+- id: I003-N09
+  type: experiment
+  title: ECMP-visible topology exposes parallel links but still does not define paths
+  status: partial
+  provenance: ai-executed
+  timestamp: '2026-07-03T18:05:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N06
+  - I003-N08
+  primary_dependency: I003-N08
+  record: ara/issues/issue003.md#I003-N09
+  evidence:
+  - E003-07
+- id: I003-N10
+  type: dead_end
+  title: Backend knobs and further hash tuning do not create a general route contract
+  status: rejected
+  provenance: ai-executed
+  timestamp: '2026-07-03T19:40:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N08
+  - I003-N09
+  primary_dependency: I003-N09
+  record: ara/issues/issue003.md#I003-N10
+  evidence:
+  - E003-08
+- id: I003-N11
+  type: pivot
+  title: Replace the high-K proxy with explicit configuration-driven QP paths
+  status: accepted
+  provenance: user-revised
+  timestamp: '2026-07-10T18:41:00+08:00'
+  issue: 3
+  depends_on:
+  - I003-N10
+  primary_dependency: I003-N10
+  record: ara/issues/issue003.md#I003-N11
+  evidence:
+  - E003-09
+  - E004-01
+  - E004-08
+- id: I004-N01
+  type: question
+  title: Can a small explicit QP group express solver-selected paths credibly?
+  status: accepted
+  provenance: user
+  timestamp: '2026-07-10T18:41:00+08:00'
+  issue: 4
+  depends_on:
+  - I003-N11
+  primary_dependency: I003-N11
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-01
+- id: I004-N02
+  type: dead_end
+  title: High-K automatic QP hash cannot serve as the path contract
+  status: rejected
+  provenance: user
+  timestamp: '2026-07-10T18:41:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N01
+  primary_dependency: I004-N01
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-02
+- id: I004-N03
+  type: decision
+  title: Put QP plans and packet allocation in the bridge
+  status: accepted
+  provenance: user
+  timestamp: '2026-07-10T18:41:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N01
+  - I004-N02
+  primary_dependency: I004-N02
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-01
+- id: I004-N04
+  type: experiment
+  title: Source-port preimage and route-slot manifests form a useful prototype
+  status: superseded
+  provenance: ai-executed
+  timestamp: '2026-07-10T21:20:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N03
+  primary_dependency: I004-N03
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-03
+- id: I004-N05
+  type: pivot
+  title: Use path-specific destination aliases and one output per hop
+  status: accepted
+  provenance: ai-suggested
+  timestamp: '2026-07-11T19:22:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N04
+  primary_dependency: I004-N04
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-04
+- id: I004-N06
+  type: experiment
+  title: Persistent QP FIFO preserves connection-level state
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-07-11T19:24:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N05
+  primary_dependency: I004-N05
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-05
+- id: I004-N07
+  type: dead_end
+  title: An external public ns-3 PR is the wrong repository boundary
+  status: rejected
+  provenance: ai-executed
+  timestamp: '2026-07-11T01:07:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N03
+  primary_dependency: I004-N03
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-07
+- id: I004-N08
+  type: experiment
+  title: Sweep one, two and four QPs per complete path
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-07-11T19:29:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N05
+  primary_dependency: I004-N05
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-06
+- id: I004-N09
+  type: decision
+  title: Default to one QP per complete physical path
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-07-11T19:29:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N08
+  primary_dependency: I004-N08
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-06
+- id: I004-N10
+  type: decision
+  title: Accept the minimal configuration-driven persistent-QP adapter
+  status: accepted
+  provenance: user-revised
+  timestamp: '2026-07-11T21:52:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N06
+  - I004-N07
+  - I004-N09
+  primary_dependency: I004-N06
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-08
+  - E004-09
+- id: I004-N11
+  type: dead_end
+  title: Forced policy runs in a shared directory overwrite earlier trace evidence
+  status: rejected
+  provenance: ai-executed
+  timestamp: '2026-09-15T19:09:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N10
+  - I005-N10
+  primary_dependency: I004-N10
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-10
+- id: I004-N12
+  type: pivot
+  title: Isolate policy and pass output directories without changing simulator behavior
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-09-15T19:11:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N11
+  primary_dependency: I004-N11
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-11
+- id: I004-N13
+  type: experiment
+  title: Reproduce four R=1 8MB Clos hash cases on clean Linux-built ASTRA
+  status: partial
+  provenance: ai-executed
+  timestamp: '2026-09-15T19:15:00+08:00'
+  issue: 4
+  depends_on:
+  - I004-N12
+  primary_dependency: I004-N12
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-11
+- id: I004-N14
+  type: dead_end
+  title: Wrapper validation must follow the actual benchmark summary schema
+  status: rejected
+  provenance: ai-executed
+  timestamp: '2026-09-16T11:00:03+08:00'
+  issue: 4
+  depends_on:
+  - I005-N11
+  primary_dependency: I005-N11
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-12
+- id: I004-N15
+  type: experiment
+  title: Verify that both recent wrapper or archive failures have successful same-input
+    recovery
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-09-16T11:30:00+08:00'
+  issue: 4
+  depends_on:
+  - I005-N14
+  - I004-N11
+  - I004-N14
+  primary_dependency: I004-N11
+  record: ara/issues/issue004.md
+  evidence:
+  - E004-13
+- id: I005-N01
+  type: question
+  title: Should uniform allocation replace hash as the default?
+  status: accepted
+  provenance: user
+  timestamp: '2026-07-11T23:21:00+08:00'
+  issue: 5
+  depends_on:
+  - I004-N10
+  primary_dependency: I004-N10
+  record: ara/issues/issue005.md#I005-N01
+  evidence:
+  - E005-01
+- id: I005-N02
+  type: experiment
+  title: Run paired 1MiB hash and round-robin cases
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-07-11T23:39:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N01
+  - I004-N08
+  primary_dependency: I005-N01
+  record: ara/issues/issue005.md#I005-N02
+  evidence:
+  - E005-02
+- id: I005-N03
+  type: experiment
+  title: Measure active QPs and per-flow message-count spread
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-07-11T23:43:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N02
+  primary_dependency: I005-N02
+  record: ara/issues/issue005.md#I005-N03
+  evidence:
+  - E005-03
+- id: I005-N04
+  type: decision
+  title: Make uniform allocation the default and retain explicit hash
+  status: accepted
+  provenance: user-revised
+  timestamp: '2026-07-11T23:43:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N02
+  - I005-N03
+  - I004-N03
+  - I004-N09
+  primary_dependency: I005-N02
+  record: ara/issues/issue005.md#I005-N04
+  evidence:
+  - E005-02
+  - E005-03
+  - E005-04
+- id: I005-N05
+  type: decision
+  title: Preserve legacy hash rows and distinguish active QPs
+  status: accepted
+  provenance: ai-suggested
+  timestamp: '2026-07-11T23:44:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N03
+  - I005-N04
+  primary_dependency: I005-N04
+  record: ara/issues/issue005.md#I005-N05
+  evidence:
+  - E005-03
+  - E005-04
+- id: I005-N06
+  type: question
+  title: Can ASTRA build artifacts be safely reused by commit SHA?
+  status: accepted
+  provenance: user
+  timestamp: '2026-07-11T23:48:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N05
+  primary_dependency: I005-N05
+  record: ara/issues/issue005.md#I005-N06
+  evidence:
+  - E005-05
+- id: I005-N07
+  type: dead_end
+  title: Caching only the executable or ns-3 libraries is not ABI-safe
+  status: superseded
+  provenance: ai-executed
+  timestamp: '2026-07-12T00:26:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N06
+  primary_dependency: I005-N06
+  record: ara/issues/issue005.md#I005-N07
+  evidence:
+  - E005-06
+- id: I005-N08
+  type: pivot
+  title: Bind binary and runtime libraries in one verified cache
+  status: accepted
+  provenance: ai-suggested
+  timestamp: '2026-07-12T00:26:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N07
+  primary_dependency: I005-N07
+  record: ara/issues/issue005.md#I005-N08
+  evidence:
+  - E005-07
+  - E005-08
+- id: I005-N09
+  type: dead_end
+  title: External protobuf path precedence bypasses the verified cache
+  status: rejected
+  provenance: ai-executed
+  timestamp: '2026-07-12T00:35:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N07
+  - I005-N08
+  primary_dependency: I005-N08
+  record: ara/issues/issue005.md#I005-N09
+  evidence:
+  - E005-06
+- id: I005-N10
+  type: decision
+  title: Accept the uniform default and verified SHA cache
+  status: accepted
+  provenance: user-revised
+  timestamp: '2026-07-12T10:35:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N08
+  - I005-N09
+  primary_dependency: I005-N08
+  record: ara/issues/issue005.md#I005-N10
+  evidence:
+  - E005-08
+  - E005-09
+- id: I005-N11
+  type: experiment
+  title: Uniform allocation keeps all four tested 8MB R=1 Linux Clos gaps below eight
+    percent
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-09-15T19:15:00+08:00'
+  issue: 5
+  depends_on:
+  - I004-N13
+  - I005-N10
+  primary_dependency: I004-N13
+  record: ara/issues/issue005.md#I005-N11
+  evidence:
+  - E005-10
+- id: I005-N12
+  type: experiment
+  title: Fixed-version single-layer Clos scales reproducibly through selected 32-card
+    cases
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-09-16T11:11:16+08:00'
+  issue: 5
+  depends_on:
+  - I004-N14
+  - I004-N13
+  primary_dependency: I004-N13
+  record: ara/issues/issue005.md#I005-N12
+  evidence:
+  - E005-11
+  - E005-12
+- id: I005-N13
+  type: question
+  title: What explains the high-parallelism residual gap and the separate 32-card
+    PFC observation?
+  status: partial
+  provenance: ai-executed
+  timestamp: '2026-09-16T11:11:16+08:00'
+  issue: 5
+  depends_on:
+  - I005-N12
+  primary_dependency: I005-N12
+  record: ara/issues/issue005.md#I005-N13
+  evidence:
+  - E005-11
+  - E005-12
+- id: I005-N14
+  type: decision
+  title: Consolidate current Clos gaps and failures before expanding scope
+  status: accepted
+  provenance: user
+  timestamp: '2026-09-16T11:24:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N13
+  primary_dependency: I005-N13
+  record: ara/issues/issue005.md#I005-N14
+  evidence:
+  - E005-13
+- id: I005-N15
+  type: experiment
+  title: Full performance traces identify concentrated ACK return paths as a bottleneck
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-09-16T11:33:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N14
+  primary_dependency: I005-N14
+  record: ara/issues/issue005.md#I005-N15
+  evidence:
+  - E005-14
+- id: I005-N16
+  type: experiment
+  title: Completing missing ACK parallel routes improves isolated cases without changing
+    forward traffic or protocol settings
+  status: accepted
+  provenance: ai-executed
+  timestamp: '2026-09-16T11:40:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N15
+  primary_dependency: I005-N15
+  record: ara/issues/issue005.md#I005-N16
+  evidence:
+  - E005-15
+- id: I005-N17
+  type: question
+  title: How should ACK route completion be integrated and validated beyond this prototype?
+  status: open
+  provenance: ai-executed
+  timestamp: '2026-09-16T11:40:00+08:00'
+  issue: 5
+  depends_on:
+  - I005-N16
+  primary_dependency: I005-N16
+  record: ara/issues/issue005.md#I005-N17
+  evidence:
+  - E005-14
+  - E005-15

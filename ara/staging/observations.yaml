@@ -1,1 +1,38 @@
-observations: []
+observations:
+- id: O004-20260915-historical-hash-microdifference
+  timestamp: '2026-09-15T19:15:00+08:00'
+  provenance: ai-executed
+  text: 'Four Linux R=1 hash times approximately reproduce the historical 8MB table,
+    but three differ by up to 0.1843%. Current repeats match exactly. Main model settings
+    and explicit allocation code match; historical macOS raw binary and complete artifacts
+    are unavailable locally. Platform difference is observed, not established as the
+    cause; maxR calibration is not a demonstrated cause.
+
+    '
+  promotion_condition: Obtain historical raw inputs/binary or a controlled diagnostic
+    that identifies the cause without changing model semantics.
+  issue: 4
+  context: '原Issue #6 2026-09-15历史Linux复现；migration/source/ara/staging/observations.yaml。'
+  bound_to:
+  - I004-N13
+- id: O005-20260916-residual-gap-and-pfc
+  issue: 5
+  timestamp: '2026-09-16T11:11:16+08:00'
+  provenance: ai-executed
+  text: 'I009-N13 records two separate unresolved observations: 8/2/4 takes 151.714us
+    with zero PFC and gap8.36714%, versus equal-ideal-capacity8/4/2 at148.855us; 32/2/2
+    has156 received pause and156 received resume events per repeat, but gap4.28194%.
+    Native input and calibration checks pass. Neither event counts nor topology correlation
+    quantify causal latency contributions.
+
+    '
+  context: '源观察原文保留历史ID；历史resolution: I009-N15 and I009-N16 establish omitted parallel
+    ACK return interfaces and an effective isolated candidate; the separate PFC-only
+    latency contribution remains open in I009-N17.。迁移不是新的经验结论。'
+  bound_to:
+  - I005-N13
+  - I005-N15
+  - I005-N16
+  - I005-N17
+  promotion_condition: Complete integration/regression and isolate remaining timing
+    contributions; do not equate the route-change benefit with PFC-only delay.

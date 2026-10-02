@@ -1,0 +1,21 @@
+issue: 3
+title: Clos all-to-all 历史校准与显式路径契约的失败路线
+url: https://github.com/tonyhaohan/ARA-base/issues/3
+branch: codex/issue3-bridge-clos-history
+status: completed
+outcome: partial
+depends_on: []
+summary: 历史解析校准和lane代理给出局部容量结果，但raw-rank solverPath、native all-to-all、高K哈希及backend调参没有建立通用且可审计的路径契约；转向少量显式QP与完整路径配置。迁移完成不表示历史仿真重跑或源目标全部实现。
+record: ara/issues/issue003.md
+execplan: docs/plans/issue003_bridge_clos_history/ExecPlan.md
+best_ideas:
+- id: I003-N03
+  reason: 具体raw-rank反例定位solverPath元数据不控制物理注入，避免把桥接估计视为仿真证据。
+- id: I003-N11
+  reason: 把多轮负结果凝结为可审计显式QP/路径契约；该转向的工程接受不等于所有性能目标成立。
+promising_ideas:
+- id: I003-N11
+  reason: 少量QP与完整路径配置直接处理已定位的能力缺口；后续记录在新Issue4。
+open_questions:
+- 原始runs、二进制与完整trace未随冻结迁移源提供，无法独立重算历史结果。
+- 原生机制在小N高并行度下的残差因果贡献未被隔离；8%不是已证明的通用上界。
