@@ -16,6 +16,12 @@ python3 -m unittest discover -s tests -v
 
 打开 `ara/views/index.html` 查看双层研究地图。`main` 保留干净的初始 artifact（只有虚拟根）；真实 bridge 历史放在 [`codex/issue2-bridge-history`](https://github.com/tonyhaohan/ARA-base/tree/codex/issue2-bridge-history) 分支。切到示例分支后，用 `python scripts/ara.py issue 5` 查看总结及两组重点 idea，用 `python scripts/ara.py read I003-N01` 提取单个章节。已有 `.venv` 时直接激活复用。只检查页面是否最新使用 `render --check`，不会改写文件。
 
+## 自动生成 HTML
+
+在项目根执行 `python scripts/ara.py render`，脚本读取当前 YAML 索引、研究纪要及证据记录，从复用模板 `scripts/viewer.html` 生成 `ara/views/index.html`。节点、依赖、重点 idea 和纪要内容都来自研究记录，无需逐次手写页面。
+
+`ara/views/index.html` 是生成产物，不直接编辑。数据更新后重新运行脚本；CI 的 `render --check` 会拒绝与数据或模板不一致的旧页面。
+
 ## 使用与抽取
 
 - 新研究项目可以直接使用 GitHub 的 Use this template；修改 `ara/project.yaml` 的项目名与仓库地址。
