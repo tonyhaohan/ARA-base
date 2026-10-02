@@ -397,7 +397,8 @@ def main():
         else:
             print(history(root, args.base))
     except (ValueError, OSError, yaml.YAMLError, subprocess.CalledProcessError) as exc:
-        parser.exit(1, f"ARA error: {exc}\n")
+        message = (exc.stderr or str(exc)).strip() if isinstance(exc, subprocess.CalledProcessError) else str(exc)
+        parser.exit(1, f"ARA error: {message}\n")
 
 
 if __name__ == "__main__":
