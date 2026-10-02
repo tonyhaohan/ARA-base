@@ -1,0 +1,5 @@
+ideas:
+  - id: I000-N00
+    type: root
+    title: 研究起点
+    depends_on: []

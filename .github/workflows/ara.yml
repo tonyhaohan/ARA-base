@@ -1,0 +1,21 @@
+name: Validate ARA
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  records:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/ara.py validate
+      - run: python scripts/ara.py render --check
+      - name: Check append-only history
+        if: github.event_name == 'pull_request'
+        run: python scripts/ara.py history --base "${{ github.event.pull_request.base.sha }}"
